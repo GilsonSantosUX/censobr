@@ -1,0 +1,26 @@
+{
+  "name": "CensoBR",
+  "version": "1.0.0",
+  "description": "API project CensoBR group 1 UFMS/2022-2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "author": "Gilson Santos & Jeferso Lima",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "@": "src",
+    "@app": "src/app.js",
+    "@config":"src/config",
+    "@model":"src/model",
+    "@controller":"src/controller",
+    "@service":"src/service",
+    "@helper":"src/helper"
+    
+  }
+}
