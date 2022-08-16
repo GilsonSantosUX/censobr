@@ -9,7 +9,8 @@
         "@controller/*": ["src/controller/*"],
         "@model/*": ["src/model/*"],
         "@service/*": ["src/service/*"],
-        "@helper/*": ["src/helper/*"]
+        "@helper/*": ["src/helper/*"],
+        "@db/*":["src/db/*"]
         
       }
     },

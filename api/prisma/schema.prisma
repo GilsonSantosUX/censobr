@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model table_office {
+  id         Int          @id @default(autoincrement())
+  office     String       @db.VarChar(40)
+  table_user table_user[]
+}
+
+model table_user {
+  id               Int          @default(autoincrement())
+  cpf              String       @id @db.VarChar(11)
+  nome             String       @db.VarChar(120)
+  supervisor       String       @db.VarChar(11)
+  office_fk        Int
+  table_office     table_office @relation(fields: [office_fk], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "office_fk")
+  table_user       table_user   @relation("table_userTotable_user", fields: [supervisor], references: [cpf], onDelete: NoAction, onUpdate: NoAction, map: "supervisor_fk")
+  other_table_user table_user[] @relation("table_userTotable_user")
+}
