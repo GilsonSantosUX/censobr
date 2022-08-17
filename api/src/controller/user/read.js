@@ -9,11 +9,14 @@ const User = {
     },
     async getUnique(req,res){
         const statusCode = await status(res.statusCode);
-        if(!req.body){
+        console.log(req.body);
+        if(req.body){
             const getUser = await getUnique(req.body);
             res.json({result:getUser});
+        }else{
+            res.json({statusCode});
         }
-        res.json({statusCode});
+        
         
     }
 }

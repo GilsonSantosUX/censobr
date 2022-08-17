@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const TestController = require('@controller/test');
+const { renderHome } = require('@controller/home/index');
 const { getAll, getUnique } = require('@controller/user/read');
 const { createUser } = require('@controller/user/create');
 const { deleteUser } = require("@controller/user/delete");
 
-router.get('/',TestController.helloWolrd);
+router.get('/',renderHome);
 
 // Router User
 router.get('/users',getAll);

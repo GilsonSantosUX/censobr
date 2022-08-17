@@ -9,22 +9,20 @@ const User = {
         }); 
     },
     async getUnique(data){
-        if(!data){
-            const {u_cpf} = data;
-            return prisma.table_user.findUnique({
-                where: { cpf: u_cpf },
-                // include:{
-                //     table_office:true,
-                //     select:{
-                //         office:true,
-                //     }
-                // },
-                select:{
-                    cpf:true,
-                    nome:true,
-                }
-            })
-        }return;
+        const {u_cpf} = data;
+        return prisma.table_user.findUnique({
+            where: { cpf: u_cpf },
+            // include:{
+            //     table_office:true,
+            //     select:{
+            //         office:true,
+            //     }
+            // },
+            select:{
+                cpf:true,
+                nome:true,
+            }
+        })
     },
     async create(data){
         const { u_cpf,u_name,u_supervisor,u_office_fk } = data;
