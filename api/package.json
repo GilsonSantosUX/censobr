@@ -4,7 +4,7 @@
   "description": "API project CensoBR group 1 UFMS/2022-2",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js",
+    "start": "node --prefix ./server.js",
     "dev": "nodemon ./server.js"
   },
   "keywords": [
