@@ -9,7 +9,7 @@ const User = {
         }); 
     },
     async getUnique(data){
-        if(data!=undefined){
+        if(!data){
             const {u_cpf} = data;
             return prisma.table_user.findUnique({
                 where: { cpf: u_cpf },

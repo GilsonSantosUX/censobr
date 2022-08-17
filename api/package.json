@@ -4,7 +4,8 @@
   "description": "API project CensoBR group 1 UFMS/2022-2",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
   },
   "author": "Gilson Santos & Jeferso Lima",
   "license": "MIT",
@@ -17,7 +18,7 @@
   "_moduleAliases": {
     "@": "src",
     "@app": "src/app.js",
-    "@db":"db",
+    "@db": "db",
     "@config": "src/config",
     "@model": "src/model",
     "@controller": "src/controller",
@@ -25,6 +26,7 @@
     "@helper": "src/helper"
   },
   "devDependencies": {
+    "nodemon": "^2.0.19",
     "prisma": "4.2.1"
   }
 }
