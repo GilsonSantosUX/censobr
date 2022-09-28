@@ -1,19 +1,18 @@
 {
-    "compilerOptions": {
-      "target": "es2017",
-      "allowSyntheticDefaultImports": false,
-      "baseUrl": "./",
-      "paths": {
-        "@app/*": ["src/*"],
-        "@config/*": ["src/config/*"],
-        "@model/*": ["src/model/*"],
-        "@view/*": ["src/view/*"],
-        "@controller/*": ["src/controller/*"],
-        "@service/*": ["src/service/*"],
-        "@helper/*": ["src/helper/*"],
-        "@db/*":["src/db/*"]
-        
-      }
-    },
-    "exclude": ["node_modules", "dist"]
-  }
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@model/*": ["src/model/*"],
+      "@view/*": ["src/view/*"],
+      "@controller/*": ["src/controller/*"],
+      "@service/*": ["src/service/*"],
+      "@helper/*": ["src/helper/*"],
+      "@db/*":["src/db/*"],
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

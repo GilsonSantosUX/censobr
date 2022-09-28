@@ -1,5 +1,5 @@
 const {status} = require("@helper/Status");
-const {create} = require("@model/user/user");
+const {create} = require("@model/user");
 
 const User = {
     async createUser(req,res){

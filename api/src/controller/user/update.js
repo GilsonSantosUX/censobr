@@ -1,4 +1,4 @@
-const { update } = require("@model/user/user");
+const { update } = require("@model/user");
 
 const User = {
     async updateUser(req,res){

@@ -1,5 +1,5 @@
 const { status } = require("@helper/Status");
-const { getAll, getUnique } = require("@model/user/user");
+const { getAll, getUnique } = require("@model/user");
 
 const User = {
     async getAll(req,res){

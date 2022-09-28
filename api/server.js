@@ -1,8 +1,12 @@
 require('dotenv').config();
 require('module-alias/register');
-const init = require('@service/boot');
+const core = require('@service/core');
 const db = require("@service/conectdb");
-// const config = require('@config');
 
-init();
-db();
+try{
+    core.start();
+    db.start();
+}catch(error){
+    console.log('[index] Uncaught error!');
+    console.log(error);
+}

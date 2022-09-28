@@ -1,5 +1,5 @@
 const {status} = require('@helper/Status');
-const { userDelete } = require("@model/user/user");
+const { userDelete } = require("@model/user");
 
 const User = {
     async deleteUser(req,res){
