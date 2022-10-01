@@ -8,9 +8,10 @@ datasource db {
 }
 
 model pessoaList {
-  id       Int    @id @default(autoincrement())
-  cpf      String @unique @db.VarChar(11)
-  email    String @unique @db.VarChar(150)
-  password String @db.VarChar(200)
-  name     String @db.VarChar(255)
+  id              Int    @default(autoincrement())
+  cpf             String @id @db.VarChar(11)
+  email           String @unique @db.VarChar(150)
+  password        String @db.VarChar(200)
+  name            String @db.VarChar(120)
+  supervisor      String @db.VarChar(11)
 }
