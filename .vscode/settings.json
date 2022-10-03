@@ -1,0 +1,24 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "ec2-44-209-186-51.compute-1.amazonaws.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "CensoBR",
+            "database": "d77ca9l0kbrr8",
+            "username": "bzcziazdiqqagr",
+            "password": "7c11f5291dc7e73b03c9bfa04c9f74d75ba3bbee520ec7b108bd557fbf0e2834"
+        },
+        {
+            "previewLimit": 50,
+            "server": "ec2-3-219-19-205.compute-1.amazonaws.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "censoBR",
+            "database": "d8n9fvinrsia2j",
+            "username": "jhknauumdqatmf",
+            "password": "c62986f10995a9f07c1aa5a8ff49118adef37f139fbb2a9c8966fa087550f865"
+        }
+    ]
+}

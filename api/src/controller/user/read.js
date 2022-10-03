@@ -5,7 +5,6 @@ module.exports = {
     async getAll(req,res){
         try{
             // if(!req.body) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
-
             const data = await getAll(); 
             
             if(!data) return res.status(400).json({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});

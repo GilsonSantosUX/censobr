@@ -2,7 +2,7 @@ const {status} = require("@helper/Status");
 const {create} = require("@model/user");
 
 module.exports = {
-    async createUser(req,res){
+    async createUser(error,req,res){
         //#region Swagger description API 
         /*
             #swagger.description = 'Descrição do endpoint'

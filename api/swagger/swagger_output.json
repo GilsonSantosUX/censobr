@@ -14,24 +14,11 @@
     "/auth": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
+        "parameters": [],
+        "responses": {}
       }
     },
-    "/validation": {
+    "/authenticate": {
       "get": {
         "description": "",
         "parameters": [
