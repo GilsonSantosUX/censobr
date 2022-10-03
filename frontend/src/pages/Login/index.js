@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Text, HStack, Flex, Box, Image, Link } from '@chakra-ui/react'
+import React, { useState, useContext, useEffect } from "react";
+import { Text, HStack, Flex, Box, Image, Link, Input } from '@chakra-ui/react'
+import { Context } from "../../context/index"
 
-import { Input } from "../../components/Input/index.js"
+// import { Input } from "../../components/Input/index.js"
 import { Button } from "../../components/Button";
 
 import loginImg from "../../dist/login.svg"
@@ -10,11 +11,31 @@ import iconFirstAcess from "../../dist/iconFirstAcess.svg"
 
 export const Login = () => {
 
+    const { authenticate, handleLogin, getLogin } = useContext(Context);
+
     const [inputLogin, setInputLogin] = useState();
     const [inputPassword, setInputPassword] = useState();
+    const [emailAndPasswordValid, setEmailAndPasswordValid] = useState(true);
 
-    const action = () => {
-        window.alert('oi')
+    // useEffect(() => {
+    //     if (!authenticate) {
+    //         console.log("login", authenticate)
+    //         return;
+    //     } else {
+    //         window.location.href = "/home"
+    //     }
+
+    // }, [authenticate])
+
+
+    const validLogin = (inputLogin, inputPassword) => {
+        handleLogin(inputLogin, inputPassword)
+        // if (inputLogin && inputPassword) {
+        //     handleLogin(inputLogin, inputPassword)
+        // } else {
+        //     setEmailAndPasswordValid(false);
+        // }
+
     }
 
     return (
@@ -31,15 +52,19 @@ export const Login = () => {
                     <Text fontSize="20px" color="white" >Valide suas credenciais para acessar.</Text>
                 </Box>
                 <Box mb="20px">
-                    <Input inputText={inputLogin} setInputText={setInputLogin} titleLabel={"Usuário"} placeHolder={"Informe o usuário ex: user@ufms.br"} mb="20px" />
+                    {/* <Input inputText={inputLogin} setInputText={setInputLogin} titleLabel={"Usuário"} placeHolder={"Informe o usuário ex: user@ufms.br"} /> */}
+                    <Text color="white">{"Usuário"}</Text>
+                    <Input type={"text"} value={inputLogin} onChange={e => setInputLogin(e.target.value)} placeholder={"Informe o usuário ex: user@ufms.br"} bgColor="white" mb="20px" />
                 </Box>
                 <Box mb="72px">
-                    <Input type="password" inputText={inputPassword} setInputText={setInputPassword} titleLabel={"Senha"} placeHolder={"Informe sua senha"} />
+                    <Text color="white">{"Senha"}</Text>
+                    <Input type={"password"} value={inputPassword} onChange={e => setInputPassword(e.target.value)} placeholder={"Informe sua senha"} bgColor="white" mb="20px" />
                 </Box>
                 <Box mb="20px">
-                    <Button activeButton={action} />
+                    <Button activeButton={() => validLogin(inputLogin, inputPassword)} />
                 </Box>
                 <Flex w="full" justifyContent="center"><Link color="white" mr="5px">Cadastrar novo acesso</Link> <Image src={iconFirstAcess} /></Flex>
+                {!emailAndPasswordValid && <div>senha ou email incorretos</div>}
             </Box>
         </HStack>
     )

@@ -1,13 +1,27 @@
 import React from 'react';
-import { Login } from './pages/Login/index.js';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-import './App.css';
+import { AuthProvider } from './context/index.js';
+import { Login } from './pages/Login/index.js';
+import { Home } from './pages/Home/index.js';
 
 function App() {
+
+
   return (
-    <div>
-      <Login />
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<h1>oi</h1>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
