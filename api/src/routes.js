@@ -14,7 +14,7 @@ const { getController } = require('@controller/user/model-controller.js');
 
 // Routes Authentication
 
-router.get('/auth',authetication);
+router.post('/auth',authetication);
 router.use(authMiddleware);
 router.get('/authenticate',authenticate);
 router.get('/modelController',getController);
