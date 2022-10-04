@@ -5,12 +5,8 @@ const { status } = require('@helper/Status');
 const authMiddleware = require('./middlewares/auth');
 
 // Controllers
-const { getAll, getUnique } = require('@controller/user/read');
-const { createUser } = require('@controller/user/create');
-const { deleteUser } = require("@controller/user/delete");
 const  { authetication } = require("@controller/authentication");
 const { authenticate } = require('@controller/authentication/projectController');
-const { getController } = require('@controller/user/model-controller.js');
 const { createUsuario, getUsuarioAll, getUsuarioUnique } = require('@controller/usuarioController');
 
 // Routes Authentication
@@ -19,19 +15,11 @@ router.post('/auth',authetication);
 router.use(authMiddleware);
 router.get('/authenticate',authenticate);
 
-
 // Routes Usuario
 
-router.post('/auth/cadastro',createUsuario);
-router.get('/auth/usuarios',getUsuarioAll);
+router.post('/auth/usuario/cadastro',createUsuario);
 router.get('/auth/usuario',getUsuarioUnique);
-
-// Routes User
-
-router.get('/users',getAll);
-router.get('/user',getUnique);
-router.post('/user/create',createUser);
-router.delete('/user/delete',deleteUser);
+router.get('/auth/usuarios',getUsuarioAll);
 
 // Router test Swagger
 router.get('/swagger',(req,res)=>{

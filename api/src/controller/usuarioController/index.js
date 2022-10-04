@@ -20,6 +20,7 @@ module.exports = {
        //#endregion
         try{
             if(!req.body) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
+            
             if(req.papel != Papel.GG && req.papel != Papel.MS) return res.status(403).json({message:'Você não possui permissão para criar Usuário!',status:status(403).reqStatus});
 
             const data = await usuarioModel.createUsuario(req.body);

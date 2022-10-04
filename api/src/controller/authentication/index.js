@@ -1,6 +1,6 @@
+const jwt = require('jsonwebtoken');
 const { status } = require("@helper/Status");
 const { getUsuarioAuth } = require('@model/usuario');
-const jwt = require('jsonwebtoken');
 
 function token(params = {}) {
     return jwt.sign(params, JSON.stringify(process.env.SECRET), { expiresIn: 86400 });
@@ -36,9 +36,10 @@ module.exports = {
         try {
             const data = req.body;
             const usuario = await getUsuarioAuth(data);
+            
             if (!usuario) return res.status(status(400).reqStatus).json({message:status(400).message,data,status:status(400).reqStatus});
             const {idusuario,email,senha,Papel} = usuario;
-           
+
             if (data.email.trim() === email.trim() && data.senha.trim() === senha.trim()){
                 return res.status(status(200).reqStatus).json({
                     idusuario,

@@ -7,9 +7,13 @@ module.exports = {
                 {
                     select:{
                         idusuario:true,
-                        cpf:true,
-                        nome:true,
                         email:true,
+                        Pessoa:{
+                            select:{
+                                nome:true,
+                                cpf:true
+                            }
+                        },
                         Papel:{
                             select:{
                                 sigla:true,
@@ -18,16 +22,15 @@ module.exports = {
                         },
                         Supervisiona:{
                             select:{
-                                nome:true,
-                                email:true
-                            },
-                        orderBy: {
-                            nome: 'asc',
+                                email:true,
+                                Pessoa:{
+                                    select:{
+                                        nome:true,
+                                        cpf:true
+                                    }
+                                },
+                            }
                         }
-                        }
-                    },
-                    orderBy: {
-                        nome: 'asc',
                     }
                 }
             );
@@ -76,10 +79,13 @@ module.exports = {
                 where: { idusuario },
                 select:{
                     idusuario:true,
-                    nome:true,
-                    cpf:true,
-                    senha:false,
                     email:true,
+                    Pessoa:{
+                        select:{
+                            nome:true,
+                            cpf:true
+                        }
+                    },
                     Papel:{
                         select:{
                             sigla:true,
@@ -88,8 +94,13 @@ module.exports = {
                     },
                     Supervisiona:{
                         select:{
-                            nome:true,
-                            email:true
+                            email:true,
+                            Pessoa:{
+                                select:{
+                                    nome:true,
+                                    cpf:true
+                                }
+                            },
                         }
                     }
                 }
@@ -105,18 +116,28 @@ module.exports = {
         }
     },
     async createUsuario(data){
-        const { nome,cpf,senha,email,fkpapel,supervisor, } = data;
+        const { senha,email,fkpapel,supervisor,nome,cpf,rg } = data;
         try{
-            return await prisma.Usuario.create({
+            const pessoa = await prisma.Pessoa.create({
                 data:{
                     nome,
                     cpf,
-                    senha:md5(senha),
+                    rg
+                }
+            });
+
+            const usuario = await prisma.Usuario.create({
+                data:{
                     email,
-                    fkpapel,
+                    senha:md5(senha),
+                    fkpapel:fkpapel,
+                    fkpessoa:pessoa.idpessoa,
                     supervisor,
                 }
             });
+
+            return {usuario,pessoa};
+
         }catch(error){
             throw console.log({
                 name: 'Prisma error',
@@ -128,16 +149,25 @@ module.exports = {
         }
     },
     async updateUsuario(data){
-        const { nome,fkpapel,supervisor } = data;
+        const { idusuario,fkpapel,supervisor,idpessoa,nome } = data;
         try{
-            return await prisma.Usuario.update({
-                where: { cpf },
+            const pessoa = await prisma.Pessoa.update({
+                where:{idpessoa},
                 data:{
                     nome,
+                    rg
+                }
+            })
+
+            const usuario = await prisma.Usuario.update({
+                where: { idusuario },
+                data:{
                     fkpapel,
-                    supervisor,
+                    supervisor
                 }
             });
+
+            return {usuario,pessoa};
         }catch(error){
             throw console.log({
                 name: 'Prisma error',
