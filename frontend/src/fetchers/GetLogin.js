@@ -3,17 +3,17 @@ export const GetLogin = (email, password) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            // "u_email": email,
-            // "u_password": password
-            "u_email": "ghaby@gmail.com",
-            "u_password": "1234*"
+            "u_email": email,
+            "u_password": password
         })
     }).then((data) => {
         return data.json();
     }).then((data) => {
         return data;
     }).catch((e) => {
+        console.log("erro ao logar")
         console.error(e)
+        return false;
     });
 
     return response;

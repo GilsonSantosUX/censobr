@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { Alert, AlertIcon } from '@chakra-ui/react'
 import { GetLogin } from "../fetchers/GetLogin.js"
 import { GetAuthUser } from "../fetchers/GetAuthUser.js"
 
@@ -7,32 +8,46 @@ const Context = createContext();
 function AuthProvider({ children }) {
     const [authenticate, setAuthenticate] = useState(false);
     const [loading, setLoadingoading] = useState(true);
+    const [emailAndPasswordInvalid, setEmailAndPasswordInvalid] = useState(true);
 
     useEffect(() => {
-        const auth = localStorage.getItem("token");
-        console.log("auth", auth)
+        (async () => {
+            const auth = localStorage.getItem("token");
+            if (auth) {
+                const ok = await GetAuthUser(auth)
+                ok.data ? setAuthenticate(true) : setAuthenticate(false);
+            } else {
+                setAuthenticate(false);
+            }
 
-        if (auth) {
-            console.log("auth get", GetAuthUser(auth));
-            setAuthenticate(true);
-        }
-
-        setLoadingoading(false);
-    }, [])
+            setLoadingoading(false);
+        })()
+    })
 
     async function handleLogin(email, password) {
+        console.log("email", email)
+        console.log("senha", password)
         const autorizationAuth = await GetLogin(email, password);
-        console.log(autorizationAuth.token)
-        localStorage.setItem("token", autorizationAuth.token)
-        window.location.href = "/home"
+        console.log("auth", autorizationAuth)
+        if (autorizationAuth) {
+            localStorage.setItem("token", autorizationAuth.token)
+            console.log("token", autorizationAuth.token)
+            window.location.href = "/home"
+        } else {
+            setEmailAndPasswordInvalid(false);
+        }
     }
 
     if (loading) {
-        <h1>carregando....</h1>
+        return (
+            <Alert status='info' >
+                <AlertIcon />
+                Estamos verificando suas credenciais, Aguarde!
+            </Alert >)
     }
 
     return (
-        <Context.Provider value={{ authenticate, handleLogin, loading }}>
+        <Context.Provider value={{ authenticate, handleLogin, loading, emailAndPasswordInvalid, setEmailAndPasswordInvalid }}>
             {children}
         </Context.Provider>
     )
