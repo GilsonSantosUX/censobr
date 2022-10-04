@@ -11,31 +11,27 @@ import iconFirstAcess from "../../dist/iconFirstAcess.svg"
 
 export const Login = () => {
 
-    const { authenticate, handleLogin, getLogin } = useContext(Context);
+    const { authenticate, handleLogin, emailAndPasswordInvalid, setEmailAndPasswordInvalid } = useContext(Context);
 
     const [inputLogin, setInputLogin] = useState();
     const [inputPassword, setInputPassword] = useState();
-    const [emailAndPasswordValid, setEmailAndPasswordValid] = useState(true);
 
-    // useEffect(() => {
-    //     if (!authenticate) {
-    //         console.log("login", authenticate)
-    //         return;
-    //     } else {
-    //         window.location.href = "/home"
-    //     }
+    useEffect(() => {
+        if (!authenticate) {
+            return;
+        } else {
+            window.location.href = "/home"
+        }
 
-    // }, [authenticate])
+    }, [authenticate])
 
 
     const validLogin = (inputLogin, inputPassword) => {
-        handleLogin(inputLogin, inputPassword)
-        // if (inputLogin && inputPassword) {
-        //     handleLogin(inputLogin, inputPassword)
-        // } else {
-        //     setEmailAndPasswordValid(false);
-        // }
-
+        if (inputLogin && inputPassword) {
+            handleLogin(inputLogin, inputPassword)
+        } else {
+            setEmailAndPasswordInvalid(false);
+        }
     }
 
     return (
@@ -52,7 +48,6 @@ export const Login = () => {
                     <Text fontSize="20px" color="white" >Valide suas credenciais para acessar.</Text>
                 </Box>
                 <Box mb="20px">
-                    {/* <Input inputText={inputLogin} setInputText={setInputLogin} titleLabel={"Usuário"} placeHolder={"Informe o usuário ex: user@ufms.br"} /> */}
                     <Text color="white">{"Usuário"}</Text>
                     <Input type={"text"} value={inputLogin} onChange={e => setInputLogin(e.target.value)} placeholder={"Informe o usuário ex: user@ufms.br"} bgColor="white" mb="20px" />
                 </Box>
@@ -62,9 +57,12 @@ export const Login = () => {
                 </Box>
                 <Box mb="20px">
                     <Button activeButton={() => validLogin(inputLogin, inputPassword)} />
+                    <Box>
+                        {!emailAndPasswordInvalid && <Text>senha ou email incorretos</Text>}
+                    </Box>
                 </Box>
                 <Flex w="full" justifyContent="center"><Link color="white" mr="5px">Cadastrar novo acesso</Link> <Image src={iconFirstAcess} /></Flex>
-                {!emailAndPasswordValid && <div>senha ou email incorretos</div>}
+
             </Box>
         </HStack>
     )
