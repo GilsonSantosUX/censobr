@@ -7,35 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model pessoaList {
-  id         Int    @default(autoincrement())
-  cpf        String @id @db.VarChar(11)
-  email      String @unique @db.VarChar(150)
-  password   String @db.VarChar(200)
-  name       String @db.VarChar(120)
-  supervisor String @db.VarChar(11)
-}
-
 model Endereco {
-  idendereco     Int              @id(map: "idendereco_pkey") @default(autoincrement())
-  pais           String           @unique @default("Brasil") @db.Char(50)
-  cep            Int              @unique
-  estadoSigla    String           @unique @default("MS") @db.Char(2)
-  estado         String           @unique @default("Mato Grosso do Sul") @db.Char(155)
-  cidadeSigla    String           @default("CG") @db.Char(2)
-  cidade         String           @default("Campo Grande") @db.Char(155)
-  bairro         String           @db.Char(155)
-  logradouro     String           @db.Char(255)
-  numero         Int
-  complemento    String           @db.Char(155)
-  Pesquisa       Pesquisa[]
-  RegiaoEnderaco RegiaoEnderaco[]
+  idendereco   Int            @id(map: "idendereco_pkey") @default(autoincrement())
+  pais         String         @unique @default("Brasil") @db.Char(50)
+  cep          Int            @unique
+  estadoSigla  String         @unique @default("MS") @db.Char(2)
+  estado       String         @unique @default("Mato Grosso do Sul") @db.Char(255)
+  cidadeSigla  String         @default("CG") @db.Char(2)
+  cidade       String         @default("Campo Grande") @db.Char(255)
+  fkbairro     Int            @default(autoincrement())
+  logradouro   String         @db.Char(255)
+  numero       Int
+  complemento  String         @db.Char(255)
+  Bairro       Bairro         @relation(fields: [fkbairro], references: [idbairro], onDelete: NoAction, onUpdate: NoAction, map: "Bairro")
+  Entrevistado Entrevistado[]
 }
 
 model Entrevistado {
   identrevistado Int        @id(map: "identrevistado_pkey") @default(autoincrement())
-  fkUsuario      Int        @default(autoincrement())
-  Usuario        Usuario    @relation(fields: [fkUsuario], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Entrevistado_fk0")
+  fkpessoa       Int        @default(autoincrement())
+  genero         String     @db.Char(2)
+  datanascimento DateTime   @db.Date
+  idade          Int
+  fkendereco     Int        @default(autoincrement())
+  Endereco       Endereco   @relation(fields: [fkendereco], references: [idendereco], onDelete: NoAction, onUpdate: NoAction, map: "Endereco_fk")
+  Pessoa         Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
   Pesquisa       Pesquisa[]
 }
 
@@ -48,52 +44,64 @@ model Papel {
 
 model Pesquisa {
   idpesquisa     Int          @id(map: "idpesquisa_pkey") @default(autoincrement())
-  fkpessoa       Int          @default(autoincrement())
-  fkendereco     Int          @default(autoincrement())
   fkentrevistado Int          @default(autoincrement())
-  Endereco       Endereco     @relation(fields: [fkendereco], references: [idendereco], onDelete: NoAction, onUpdate: NoAction, map: "Endereco_fk")
+  fkusuario      Int          @default(autoincrement())
+  fkquestionario Int          @default(autoincrement())
+  datainicio     DateTime?    @db.Date
+  datafim        DateTime?    @db.Date
   Entrevistado   Entrevistado @relation(fields: [fkentrevistado], references: [identrevistado], onDelete: NoAction, onUpdate: NoAction, map: "Entrevistado_fk")
+  Usuario        Usuario      @relation(fields: [fkusuario], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
+  Questionario   Questionario @relation(fields: [fkquestionario], references: [idquestionario], onDelete: NoAction, onUpdate: NoAction, map: "Questionario_fk")
+  Relatorio      Relatorio[]
 }
 
 model Pessoa {
-  idpessoa       Int      @id(map: "idpessoa_pkey") @default(autoincrement())
-  nome           String   @db.Char(150)
-  cpf            String   @unique @db.Char(1)
-  rg             String   @unique @db.Char(1)
-  genero         String   @db.Char(2)
-  datanascimento DateTime @db.Date
-  idade          Int
+  idpessoa     Int            @id(map: "idpessoa_pkey") @default(autoincrement())
+  nome         String         @db.Char(150)
+  cpf          String         @unique @db.Char(11)
+  rg           String         @unique @db.Char(9)
+  Entrevistado Entrevistado[]
+  Usuario      Usuario[]
 }
 
 model Regiao {
-  idregiao       Int              @id(map: "idregiao_pkey") @default(autoincrement())
-  zona           String           @db.Char(80)
-  RegiaoEnderaco RegiaoEnderaco[]
-}
-
-model RegiaoEnderaco {
-  idregiaoendereco Int      @id(map: "idregiaoenderaco_pkey") @default(autoincrement())
-  fkregiao         Int      @default(autoincrement())
-  fkendereco       Int      @default(autoincrement())
-  Endereco         Endereco @relation(fields: [fkendereco], references: [idendereco], onDelete: NoAction, onUpdate: NoAction, map: "Endereco_fk")
-  Regiao           Regiao   @relation(fields: [fkregiao], references: [idregiao], onDelete: NoAction, onUpdate: NoAction, map: "Regiao_fk")
+  idregiao Int    @id(map: "idregiao_pkey") @default(autoincrement())
+  pkestado Int    @default(autoincrement())
+  pkcidade Int    @default(autoincrement())
+  fkbairro Int    @default(autoincrement())
+  zona     String @db.Char(80)
+  Bairro   Bairro @relation(fields: [fkbairro], references: [idbairro], onDelete: NoAction, onUpdate: NoAction, map: "Bairro_fk")
 }
 
 model Relatorio {
-  idrelatorio Int      @id(map: "idrelatorio_pkey") @default(autoincrement())
-  dataInicio  DateTime @db.Date
+  idrelatorio Int       @id(map: "idrelatorio_pkey") @default(autoincrement())
+  datainicio  DateTime? @db.Date
+  fkpesquisa  Int       @default(autoincrement())
+  Pesquisa    Pesquisa  @relation(fields: [fkpesquisa], references: [idpesquisa], onDelete: NoAction, onUpdate: NoAction, map: "Pesquisa_fk")
 }
 
 model Usuario {
-  idusuario     Int            @id(map: "idusuario_pkey") @default(autoincrement())
-  nome          String         @db.Char(255)
-  cpf           String         @unique @db.Char(11)
-  senha         String         @unique @db.Char(255)
-  email         String         @unique @db.Char(155)
-  fkpapel       Int            @default(autoincrement())
-  supervisor    String         @db.Char(11)
-  Papel         Papel          @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
-  Usuario       Usuario        @relation("UsuarioToUsuario", fields: [supervisor], references: [cpf], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
-  Entrevistado  Entrevistado[]
-  Supervisiona    Usuario[]      @relation("UsuarioToUsuario")
+  idusuario     Int        @id(map: "idusuario_pkey") @default(autoincrement())
+  senha         String     @unique @db.Char(155)
+  email         String     @unique @db.Char(155)
+  fkpapel       Int        @default(autoincrement())
+  fkpessoa      Int        @default(autoincrement())
+  supervisor    Int        @default(autoincrement())
+  Papel         Papel      @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
+  Pessoa        Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
+  Usuario       Usuario    @relation("UsuarioToUsuario", fields: [supervisor], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
+  Pesquisa      Pesquisa[]
+  Supervisiona  Usuario[]  @relation("UsuarioToUsuario")
+}
+
+model Bairro {
+  idbairro Int        @id(map: "idbairro_pkey") @default(autoincrement())
+  nome     String     @db.Char(255)
+  Endereco Endereco[]
+  Regiao   Regiao[]
+}
+
+model Questionario {
+  idquestionario Int        @id(map: "idquestionario_pkey") @default(autoincrement())
+  Pesquisa       Pesquisa[]
 }
