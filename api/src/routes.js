@@ -11,13 +11,20 @@ const { deleteUser } = require("@controller/user/delete");
 const  { authetication } = require("@controller/authentication");
 const { authenticate } = require('@controller/authentication/projectController');
 const { getController } = require('@controller/user/model-controller.js');
+const { createUsuario, getUsuarioAll, getUsuarioUnique } = require('@controller/usuarioController');
 
 // Routes Authentication
 
 router.post('/auth',authetication);
 router.use(authMiddleware);
 router.get('/authenticate',authenticate);
-router.get('/modelController',getController);
+
+
+// Routes Usuario
+
+router.post('/auth/cadastro',createUsuario);
+router.get('/auth/usuarios',getUsuarioAll);
+router.get('/auth/usuario',getUsuarioUnique);
 
 // Routes User
 
@@ -41,24 +48,24 @@ router.get('/swagger',(req,res)=>{
                 example: 'admin@censo.com.br',
             }
         */
-       //#endregion
+    //#endregion
         try{
             // Verificar se esta chegando os dados pego corpo da requisicao
-            if(!req.body) return res.status(statustus(401).reqStatus).send({message:status(401).message,status:status(401).reqStatus});
+            if(!req.body) return res.status(status(401).reqStatus).send({message:status(401).message,status:status(401).reqStatus});
 
             // Logica da controller
-            const data = {};// await create(req.body); // Chamanda da Model para buscar dados no banco de dados
+            const data = {}; // await create(req.body); // Chamanda da Model para buscar dados no banco de dados
 
             
             // Verificação de retorno se for vazio
             if(!data) return res.status(400).send({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});
 
             // Retorno de sucesso da requisicao
-            return res.status(statustus(200).reqStatus).send({message:statustus(200).message,data,status:statustus(200).reqStatus});
+            return res.status(status(200).reqStatus).send({message:status(200).message,data,status:status(200).reqStatus});
             
         }catch(error){
             // Tratativa de erro caso acontece do serviço cair ou ficar fora
-            res.status(statustus(500).reqStatus).send({message:statustus(500).message,status:statustus(500).reqStatus});
+            res.status(status(500).reqStatus).send({message:status(500).message,status:status(500).reqStatus});
         }
 });
 

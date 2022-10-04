@@ -15,7 +15,9 @@ module.exports = (req,res,next) =>{
 
     jwt.verify(token,JSON.stringify(process.env.SECRET),(err,decoded)=>{
         if(err) return res.status(401).json({message:'Token invalid!'});
-        req.userEmail = decoded.email;
+        req.idusuario = decoded.idusuario;
+        req.email = decoded.email;
+        req.papel = decoded.papel;
         return next();
     });
 }

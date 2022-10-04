@@ -1,37 +1,56 @@
 const { status } = require("@helper/Status");
-const { getAuth } = require('@model/user');
-const md5 = require('md5');
+const { getUsuarioAuth } = require('@model/usuario');
 const jwt = require('jsonwebtoken');
 
-function authorization(params = {}) {
+function token(params = {}) {
     return jwt.sign(params, JSON.stringify(process.env.SECRET), { expiresIn: 86400 });
+}
+
+function authorization(data){
+    try{
+        return jwt.verify(
+            token,
+            JSON.stringify(process.env.SECRET),
+            (err,decoded)=>{
+                if(err) return res.status(401).json({message:'Token invalid!'});
+                req.idusuario = decoded.idusuario;
+                req.email = decoded.email;
+                req.papel = decoded.papel;
+                return next();
+        });
+    }catch(error){
+        throw new console.log({
+            name: 'Authorization error',
+            message: "Erro de autenticação",
+            error: error,
+            stack: 'authorization(data)'
+        })
+    }
+    
 }
 
 module.exports = {
     async authetication(req, res) {
         // console.log(md5('censobr@ufms2022construcaodesoftware'));
-        console.log('> [Auth] Starting validation...');
-        if (!req.body) return res.status(401).json({ erro: false, message: "Falha na requisição", });
+        if (!req.body) return res.status(status(401).reqStatus).json({ erro: false, message:status(401).message,status:status(401).reqStatus});
         try {
-            const { u_email, u_password } = req.body;
-            console.log(u_email, u_password)
-            const { id, email, password } = await getAuth({ u_email });
-            const { message, reqStatus } = status(res.statusCode);
-            if (!email && !password) return res.status(200).json({ message: 'Não encontramos oque procura!', data: null, status: reqStatus });
-            console.log(u_password, password);
-            if (u_email === email && md5(u_password) === password) {
-                return res.status(200).json({
-                    email,
-                    token: authorization({ email })
+            const data = req.body;
+            const usuario = await getUsuarioAuth(data);
+            if (!usuario) return res.status(status(400).reqStatus).json({message:status(400).message,data,status:status(400).reqStatus});
+            const {idusuario,email,senha,Papel} = usuario;
+           
+            if (data.email.trim() === email.trim() && data.senha.trim() === senha.trim()){
+                return res.status(status(200).reqStatus).json({
+                    idusuario,
+                    email:email.trim(),
+                    papel:Papel.sigla,
+                    token: token({ idusuario,email:email.trim(),papel:Papel.sigla})
                 });
+            }else{
+                return res.status(status(400).reqStatus).json({message:"Credencial inválida!",data:data.email,status:status(400).reqStatus});
             }
-            return res.status(reqStatus).json({ message: 'Falha na autenticação!', status: reqStatus });
         } catch (error) {
-            console.log('> [Auth] Stopping validation...');
-            console.log(error);
-            console.log('> [Auth] Stopping done!...');
-        } finally {
-            console.log('> [Auth] Validation done!...');
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
         }
     }
 }
