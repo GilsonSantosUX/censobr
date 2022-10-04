@@ -61,7 +61,7 @@ export const Login = () => {
                         {!emailAndPasswordInvalid && <Text>senha ou email incorretos</Text>}
                     </Box>
                 </Box>
-                <Flex w="full" justifyContent="center"><Link color="white" mr="5px">Cadastrar novo acesso</Link> <Image src={iconFirstAcess} /></Flex>
+                <Flex w="full" justifyContent="center"><Link href="/register" color="white" mr="5px">Cadastrar novo acesso</Link> <Image src={iconFirstAcess} /></Flex>
 
             </Box>
         </HStack>

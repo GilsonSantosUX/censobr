@@ -7,6 +7,7 @@ import {
 
 import { AuthProvider } from './context/index.js';
 import { Login } from './pages/Login/index.js';
+import { Register } from './pages/Register/index.js';
 import { Home } from './pages/Home/index.js';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
