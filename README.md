@@ -13,7 +13,7 @@ Um censo - ou recenseamento - sobre o âmbito acadêmico. Coleta informações c
 
 ## O que é o CensoUFMS?
 
-CensoUFMS - um sistema web baseado nos métodos de pesquisa do censo demográfico do IBGE - Instituto Brasileiro de Geografia e Estatística. 
+CensoUFMS é um sistema web baseado nos métodos de pesquisa do censo demográfico do IBGE - Instituto Brasileiro de Geografia e Estatística. 
 O sistema é responsável por registrar as respostas dos candidatos da pesquisa, como também gera relatórios específicos e gerais. Possui um acompanhamento em tempo real por meio de gráficos e também é capaz de cadastrar novos pesquisadores.
 
 ## Instalação
@@ -32,9 +32,6 @@ O sistema é responsável por registrar as respostas dos candidatos da pesquisa,
 
 Acreditamos que o CensoUFMS vem para fazer a diferença, com estatísticas, informações e coleta de dados. Nele estará contido dados sensíveis sobre a população acadêmica da Universidade Federal de Mato Grosso do Sul. Produzindo assim, informações imprescindíveis para a definição e tomada de decisões no meio acadêmico.
 
-## Licença
-
-(Licença do código/projeto)
 
 ## Colaboradores
 
@@ -48,5 +45,6 @@ Este projeto existe graças aos nossos colaboradores:
 
 [![Jeferson Lima](https://avatars.githubusercontent.com/u/11639069?s=64&v=4)](https://github.com/jefersonlima) [@Jeferson Lima](https://github.com/jefersonlima)
 
+## Licença
 
-
+(Licença do código/projeto)
