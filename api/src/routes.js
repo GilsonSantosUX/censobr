@@ -7,7 +7,8 @@ const authMiddleware = require('./middlewares/auth');
 // Controllers
 const  { authetication } = require("@controller/authentication");
 const { authenticate } = require('@controller/authentication/projectController');
-const { createUsuario, getUsuarioAll, getUsuarioUnique } = require('@controller/usuarioController');
+const { createUsuario, getUsuarioAll, getUsuarioUnique, altUsuario, delUsuario } = require('@controller/usuarioController');
+const { createPessoa, getPessoaAll, getPessoaUnique,altPessoa,delPessoa } = require('@controller/pessoaController');
 
 // Routes Authentication
 
@@ -16,10 +17,18 @@ router.use(authMiddleware);
 router.get('/authenticate',authenticate);
 
 // Routes Usuario
-
 router.post('/auth/usuario/cadastro',createUsuario);
 router.get('/auth/usuario',getUsuarioUnique);
 router.get('/auth/usuarios',getUsuarioAll);
+router.put('/auth/usuario/alterar',altUsuario);
+router.delete('/auth/usuario/deletar',delUsuario);
+
+// Routes Pessoa
+router.post('/auth/pessoa/cadastro',createPessoa);
+router.get('/auth/pessoa',getPessoaUnique);
+router.get('/auth/pessoas',getPessoaAll);
+router.put('/auth/pessoa/alterar',altPessoa);
+router.delete('/auth/pessoa/deletar',delPessoa);
 
 // Router test Swagger
 router.get('/swagger',(req,res)=>{
@@ -29,11 +38,11 @@ router.get('/swagger',(req,res)=>{
             #swagger.description = 'Descrição do endpoint'
 
             #swagger.parameters[''] = {
-                description: 'Nome do parametro',
+                description: 'Token',
                 type: 'string',
                 required: true,
-                in: 'body',
-                example: 'admin@censo.com.br',
+                in: 'Atu',
+                example: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjYsImVtYWlsIjoiYnJ1bm8uZmVycmVpcmFAY2Vuc29ici5jb20uYnIiLCJwYXBlbCI6IkdTIiwiaWF0IjoxNjY0ODg4ODMxLCJleHAiOjE2NjQ5NzUyMzF9.O_8eGXCn-MO9uriHlgdBbsGkP43pgA9MBY5zVX24qFU',
             }
         */
     //#endregion

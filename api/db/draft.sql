@@ -1,7 +1,8 @@
+-- Active: 1664735649670@@ec2-3-219-19-205.compute-1.amazonaws.com@5432@d8n9fvinrsia2j@public
 CREATE TABLE "Usuario" (
 	"idusuario" serial,
-	"senha" character(155) NOT NULL UNIQUE,
-	"email" character(155) NOT NULL UNIQUE,
+	"senha" VARCHAR(155) NOT NULL UNIQUE,
+	"email" VARCHAR(155) NOT NULL UNIQUE,
 	"fkpapel" serial NOT NULL,
    	"fkpessoa" serial NOT NULL,
 	"supervisor" serial NOT NULL
@@ -11,32 +12,32 @@ CREATE TABLE "Usuario" (
 
 CREATE TABLE "Pessoa" (
 	"idpessoa" serial,
-	"nome" character(150) NOT NULL,
-	"cpf" character(11) NOT NULL UNIQUE,
-	"rg" character(9) NOT NULL UNIQUE
+	"nome" VARCHAR(150) NOT NULL,
+	"cpf" VARCHAR(11) NOT NULL UNIQUE,
+	"rg" VARCHAR(9) NOT NULL UNIQUE
 )WITH(
 	OIDS=FALSE
 ); -- check
 
 CREATE TABLE "Endereco" (
 	"idendereco" serial,
-	"pais" character(50) NOT NULL UNIQUE DEFAULT 'Brasil',
+	"pais" VARCHAR(50) NOT NULL UNIQUE DEFAULT 'Brasil',
 	"cep" INTEGER NOT NULL UNIQUE,
-	"estadoSigla" character(2) NOT NULL UNIQUE DEFAULT 'MS',
-	"estado" character(255) NOT NULL UNIQUE DEFAULT 'Mato Grosso do Sul',
-	"cidadeSigla" character(2) NOT NULL DEFAULT 'CG',
-	"cidade" character(255) NOT NULL DEFAULT 'Campo Grande',
+	"estadoSigla" VARCHAR(2) NOT NULL UNIQUE DEFAULT 'MS',
+	"estado" VARCHAR(255) NOT NULL UNIQUE DEFAULT 'Mato Grosso do Sul',
+	"cidadeSigla" VARCHAR(2) NOT NULL DEFAULT 'CG',
+	"cidade" VARCHAR(255) NOT NULL DEFAULT 'Campo Grande',
 	"fkbairro" serial NOT NULL,
-	"logradouro" character(255) NOT NULL,
+	"logradouro" VARCHAR(255) NOT NULL,
 	"numero" integer NOT NULL,
-	"complemento" character(255) NOT NULL
+	"complemento" VARCHAR(255) NOT NULL
 ) WITH (
   OIDS=FALSE
 ); -- check
 
 CREATE TABLE "Bairro" (
 	"idbairro" serial,
-	"nome" character(255) NOT NULL
+	"nome" VARCHAR(255) NOT NULL
 ) WITH (
   OIDS=FALSE
 ); -- check
@@ -46,7 +47,7 @@ CREATE TABLE "Regiao" (
   	"pkestado" serial NOT NULL,
   	"pkcidade" serial NOT NULL,
   	"fkbairro" serial NOT NULL,
-	"zona" character(80) NOT NULL
+	"zona" VARCHAR(80) NOT NULL
 ) WITH (
   OIDS=FALSE
 ); -- check
@@ -54,7 +55,7 @@ CREATE TABLE "Regiao" (
 CREATE TABLE "Papel" (
 	"idpapel" serial,
 	"sigla" char(2) NOT NULL UNIQUE,
-	"descricao" character(80) NOT NULL
+	"descricao" VARCHAR(80) NOT NULL
 ) WITH (
   OIDS=FALSE
 ); -- check
