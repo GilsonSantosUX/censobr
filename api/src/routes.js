@@ -9,6 +9,7 @@ const  { authetication } = require("@controller/authentication");
 const { authenticate } = require('@controller/authentication/projectController');
 const { createUsuario, getUsuarioAll, getUsuarioUnique, altUsuario, delUsuario } = require('@controller/usuarioController');
 const { createPessoa, getPessoaAll, getPessoaUnique,altPessoa,delPessoa } = require('@controller/pessoaController');
+const { createEndereco, getEnderecoAll, getEnderecoUnique,altEndereco,delEndereco } = require('@controller/enderecoController');
 
 // Routes Authentication
 
@@ -29,6 +30,13 @@ router.get('/auth/pessoa',getPessoaUnique);
 router.get('/auth/pessoas',getPessoaAll);
 router.put('/auth/pessoa/alterar',altPessoa);
 router.delete('/auth/pessoa/deletar',delPessoa);
+
+// Routes Endereco
+router.post('/auth/endereco/cadastro',createEndereco);
+router.get('/auth/endereco',getEnderecoUnique);
+router.get('/auth/enderecos',getEnderecoAll);
+router.put('/auth/endereco/alterar',altEndereco);
+router.delete('/auth/endereco/deletar',delEndereco);
 
 // Router test Swagger
 router.get('/swagger',(req,res)=>{

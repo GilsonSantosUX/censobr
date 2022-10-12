@@ -9,10 +9,10 @@ datasource db {
 
 model Endereco {
   idendereco   Int            @id(map: "idendereco_pkey") @default(autoincrement())
-  pais         String         @unique @default("Brasil") @db.VarChar(50)
-  cep          Int            @unique
-  estadoSigla  String         @unique @default("MS") @db.VarChar(2)
-  estado       String         @unique @default("Mato Grosso do Sul") @db.VarChar(255)
+  pais         String         @default("Brasil") @db.VarChar(50)
+  cep          Int
+  estadoSigla  String         @default("MS") @db.VarChar(2)
+  estado       String         @default("Mato Grosso do Sul") @db.VarChar(255)
   cidadeSigla  String         @default("CG") @db.VarChar(2)
   cidade       String         @default("Campo Grande") @db.VarChar(255)
   fkbairro     Int            @default(autoincrement())
