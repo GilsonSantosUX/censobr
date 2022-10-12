@@ -148,6 +148,7 @@ module.exports = {
             });
         }
     },
+    //TODO Ver co Gilson se está certo esse Update ficou confuso para mim
     async updateUsuario(data){
         const { idusuario,fkpapel,supervisor,idpessoa,nome } = data;
         try{
@@ -178,6 +179,8 @@ module.exports = {
             });
         }
     },
+    //TODO ver com Gilson sobre a necessidade desses dados no delete
+    //TODO ver se não vai excluir primeiro das classes que herda exemplo Usuario excluir da Classe Pessoa?
     async deleteUsuario(cpf){
         const data = await prisma.Usuario.findUnique({ where: { cpf },});
         try{

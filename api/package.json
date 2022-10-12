@@ -11,7 +11,7 @@
   "keywords": [
     "heroku"
   ],
-  "author": "Gilson Santos & Jeferso Lima",
+  "author": "Gilson Santos & Jeferson Lima",
   "license": "MIT",
   "dependencies": {
     "-": "^0.0.1",
