@@ -4,7 +4,7 @@ const { Papel } = require("@helper/");
 
 module.exports = {
     //#region CREATE
-    async createentrevistado(req, res) {
+    async createEntrevistado(req, res) {
         //#region Swagger description API 
         /*
             Alterar o arquivo swagger_output.json com as informações do endpoint
@@ -35,7 +35,7 @@ module.exports = {
     //#endregion
 
     //#region GETALL
-    async getentrevistadoAll(req, res) {
+    async getEntrevistadoAll(req, res) {
         //#region Swagger description API 
         /*
             Alterar o arquivo swagger_output.json com as informações do endpoint
@@ -64,7 +64,7 @@ module.exports = {
     //#endregion
 
     //#region GETUNIQUE
-    async getentrevistadoUnique(req, res) {
+    async getEntrevistadoUnique(req, res) {
         //#region Swagger description API 
         /*
             Alterar o arquivo swagger_output.json com as informações do endpoint
@@ -96,7 +96,7 @@ module.exports = {
     //#endregion
 
     //#region POSTUNIQUE
-    async altentrevistado(req, res) {
+    async altEntrevistado(req, res) {
         //#region Swagger description API 
         /*
             Alterar o arquivo swagger_output.json com as informações do endpoint
@@ -127,7 +127,7 @@ module.exports = {
     //#endregion
 
     //#region DELETEUNIQUE
-    async delentrevistado(req, res) {
+    async delEntrevistado(req, res) {
         //#region Swagger description API 
         /*
             Alterar o arquivo swagger_output.json com as informações do endpoint
