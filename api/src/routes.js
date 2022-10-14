@@ -46,6 +46,8 @@ router.get('/auth/enderecos',getEnderecoAll);
 router.put('/auth/endereco/alterar',altEndereco);
 router.delete('/auth/endereco/deletar',delEndereco);
 
+// TODO Regiao, Bairro, Relatorio
+
 // Router test Swagger
 router.get('/swagger', (req, res) => {
     //#region Swagger description API 

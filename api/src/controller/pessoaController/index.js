@@ -3,18 +3,23 @@ const { status } = require("@helper/Status/index");
 const { Papel } = require("@helper/");
 
 module.exports = {
+    
+ 
     async createPessoa(req,res){
-        //#region Swagger description API 
+        
+        //#region Swagger
         /*
-            Alterar o arquivo swagger_output.json com as informações do endpoint
+            #swagger.start
+            #swagger.path = '/pessoa/cadastro'
+            #swagger.method = 'post'
             #swagger.description = 'Descrição do endpoint'
-
-            #swagger.parameters[''] = {
-                description: 'Nome do parametro',
-                type: 'string',
-                required: true,
-                in: 'body',
-                example: 'admin@censo.com.br',
+            #swagger.produces = ["application/json"]
+            #swagger.tags = ['Pessoa']
+            #swagger.parameters['createPessoa'] = {
+               in: 'body',
+               description: 'Informações da Pessoa.',
+               required: true,
+               schema: { $ref: "#/definitions/Pessoa" }
             }
         */
        //#endregion
@@ -28,24 +33,24 @@ module.exports = {
             if(!data) return res.status(400).json({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});
 
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
+            /* #swagger.responses[200] = { 
+                schema: { $ref: "#/definitions/Pessoa" },
+                description: 'Pessoa cadastrada!.' 
+            }*/
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500] #swagger.end
         }
     },
     async getPessoaAll(req,res){
-        //#region Swagger description API 
+        //#region Swagger
         /*
-            Alterar o arquivo swagger_output.json com as informações do endpoint
-            #swagger.description = 'Retorna um array de pessoas'
-
-            #swagger.parameters[''] = {
-                description: 'Token',
-                type: 'string',
-                required: true,
-                in: 'Authorization',
-                example: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjYsImVtYWlsIjoiYnJ1bm8uZmVycmVpcmFAY2Vuc29ici5jb20uYnIiLCJwYXBlbCI6IkdTIiwiaWF0IjoxNjY0ODg4ODMxLCJleHAiOjE2NjQ5NzUyMzF9.O_8eGXCn-MO9uriHlgdBbsGkP43pgA9MBY5zVX24qFU',
-            }
+            #swagger.start
+            #swagger.path = '/pessoas'
+            #swagger.method = 'get'
+            #swagger.description = 'Retorna um array de pessoas.'
+            #swagger.produces = ["application/json"]
+            #swagger.tags = ['Pessoa']
         */
        //#endregion
         try{
@@ -54,9 +59,13 @@ module.exports = {
             if(!data) return res.status(400).json({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});
 
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
+            /* #swagger.responses[200] = { 
+                schema: [{ $ref: "#/definitions/Pessoa" }],
+                description: 'Lista de pessoas!.'
+            }*/
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500] #swagger.end
         }
     },
     async getPessoaEmail(req,res){
@@ -83,7 +92,7 @@ module.exports = {
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500]
         }
     },
     async getPessoaUnique(req,res){
@@ -112,7 +121,7 @@ module.exports = {
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500]
         }
     },
     async altPessoa(req,res){
@@ -141,7 +150,7 @@ module.exports = {
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500]
         }
     },
     async delPessoa(req,res){
@@ -170,7 +179,7 @@ module.exports = {
             return res.status(status(200).reqStatus).json({message:status(200).message,data,status:status(200).reqStatus});
             
         }catch(error){
-            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus});
+            res.status(status(500).reqStatus).json({message:status(500).message,status:status(500).reqStatus}); // #swagger.responses[500]
         }
     }
 }
