@@ -11,6 +11,9 @@ const { createUsuario, getUsuarioAll, getUsuarioUnique, altUsuario, delUsuario }
 const { createPessoa, getPessoaAll, getPessoaUnique,altPessoa,delPessoa } = require('@controller/pessoaController');
 const { createEndereco, getEnderecoAll, getEnderecoUnique,altEndereco,delEndereco } = require('@controller/enderecoController');
 const { createEntrevistado, getEntrevistadoAll, getEntrevistadoUnique, altEntrevistado, delEntrevistado } = require('@controller/entrevistadoController');
+const { createRegiao, getRegiaoAll, getRegiaoUnique, altRegiao, delRegiao } = require('@controller/regiaoController');
+const { createBairro, getBairroAll, getBairroUnique, altBairro, delBairro } = require('@controller/bairroController');
+const { createRelatorio, getRelatorioAll, getRelatorioUnique, altRelatorio, delRelatorio } = require('@controller/relatorioController');
 
 // Routes Authentication
 
@@ -46,7 +49,26 @@ router.get('/auth/enderecos',getEnderecoAll);
 router.put('/auth/endereco/alterar',altEndereco);
 router.delete('/auth/endereco/deletar',delEndereco);
 
-// TODO Regiao, Bairro, Relatorio
+// Routes Regiao
+router.post('/auth/regiao/cadastro',createRegiao);
+router.get('/auth/regiao',getRegiaoUnique);
+router.get('/auth/regioes',getRegiaoAll);
+router.put('/auth/regiao/alterar',altRegiao);
+router.delete('/auth/regiao/deletar',delRegiao);
+
+// Routes Bairro
+router.post('/auth/bairro/cadastro',createBairro);
+router.get('/auth/bairro',getBairroUnique);
+router.get('/auth/bairros',getBairroAll);
+router.put('/auth/bairro/alterar',altBairro);
+router.delete('/auth/bairro/deletar',delBairro);
+
+// Routes Relatorio
+router.post('/auth/relatorio/cadastro',createRelatorio);
+router.get('/auth/relatorio',getRelatorioUnique);
+router.get('/auth/relatorios',getRelatorioAll);
+router.put('/auth/relatorio/alterar',altRelatorio);
+router.delete('/auth/relatorio/deletar',delRelatorio);
 
 // Router test Swagger
 router.get('/swagger', (req, res) => {
