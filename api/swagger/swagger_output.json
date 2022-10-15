@@ -62,7 +62,9 @@
       }
     },
     "/auth/usuario/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Usuario"
+      ],
         "description": "",
         "parameters": [
           {
@@ -82,7 +84,9 @@
       }
     },
     "/auth/usuario": {
-      "get": {
+      "get": {"tags": [
+        "Usuario"
+      ],
         "description": "",
         "parameters": [
           {
@@ -102,7 +106,9 @@
       }
     },
     "/auth/usuarios": {
-      "get": {
+      "get": {"tags": [
+        "Usuario"
+      ],
         "description": "",
         "parameters": [
           {
@@ -122,7 +128,9 @@
       }
     },
     "/auth/usuario/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Usuario"
+      ],
         "description": "",
         "parameters": [
           {
@@ -142,7 +150,9 @@
       }
     },
     "/auth/usuario/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Usuario"
+      ],
         "description": "",
         "parameters": [
           {
@@ -162,7 +172,9 @@
       }
     },
     "/auth/pessoa/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Pessoa"
+      ],
         "description": "",
         "parameters": [
           {
@@ -182,7 +194,9 @@
       }
     },
     "/auth/pessoa": {
-      "get": {
+      "get": {"tags": [
+        "Pessoa"
+      ],
         "description": "",
         "parameters": [
           {
@@ -202,7 +216,9 @@
       }
     },
     "/auth/pessoas": {
-      "get": {
+      "get": {"tags": [
+        "Pessoa"
+      ],
         "description": "",
         "parameters": [
           {
@@ -222,7 +238,9 @@
       }
     },
     "/auth/pessoa/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Pessoa"
+      ],
         "description": "",
         "parameters": [
           {
@@ -242,7 +260,9 @@
       }
     },
     "/auth/pessoa/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Pessoa"
+      ],
         "description": "",
         "parameters": [
           {
@@ -262,7 +282,9 @@
       }
     },
     "/auth/entrevistado/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Entrevistado"
+      ],
         "description": "",
         "parameters": [
           {
@@ -282,7 +304,9 @@
       }
     },
     "/auth/entrevistados": {
-      "get": {
+      "get": {"tags": [
+        "Entrevistado"
+      ],
         "description": "",
         "parameters": [
           {
@@ -302,7 +326,9 @@
       }
     },
     "/auth/entrevistado": {
-      "get": {
+      "get": {"tags": [
+        "Entrevistado"
+      ],
         "description": "",
         "parameters": [
           {
@@ -322,7 +348,9 @@
       }
     },
     "/auth/entrevistado/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Entrevistado"
+      ],
         "description": "",
         "parameters": [
           {
@@ -342,7 +370,9 @@
       }
     },
     "/auth/entrevistado/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Entrevistado"
+      ],
         "description": "",
         "parameters": [
           {
@@ -362,7 +392,9 @@
       }
     },
     "/auth/endereco/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Endereco"
+      ],
         "description": "",
         "parameters": [
           {
@@ -382,7 +414,9 @@
       }
     },
     "/auth/endereco": {
-      "get": {
+      "get": {"tags": [
+        "Endereco"
+      ],
         "description": "",
         "parameters": [
           {
@@ -402,7 +436,9 @@
       }
     },
     "/auth/enderecos": {
-      "get": {
+      "get": {"tags": [
+        "Endereco"
+      ],
         "description": "",
         "parameters": [
           {
@@ -422,7 +458,9 @@
       }
     },
     "/auth/endereco/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Endereco"
+      ],
         "description": "",
         "parameters": [
           {
@@ -442,7 +480,9 @@
       }
     },
     "/auth/endereco/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Endereco"
+      ],
         "description": "",
         "parameters": [
           {
@@ -462,7 +502,9 @@
       }
     },
     "/auth/regiao/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Regiao"
+      ],
         "description": "",
         "parameters": [
           {
@@ -482,7 +524,9 @@
       }
     },
     "/auth/regiao": {
-      "get": {
+      "get": {"tags": [
+        "Regiao"
+      ],
         "description": "",
         "parameters": [
           {
@@ -502,7 +546,9 @@
       }
     },
     "/auth/regioes": {
-      "get": {
+      "get": {"tags": [
+        "Regiao"
+      ],
         "description": "",
         "parameters": [
           {
@@ -522,7 +568,9 @@
       }
     },
     "/auth/regiao/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Regiao"
+      ],
         "description": "",
         "parameters": [
           {
@@ -542,7 +590,9 @@
       }
     },
     "/auth/regiao/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Regiao"
+      ],
         "description": "",
         "parameters": [
           {
@@ -562,7 +612,9 @@
       }
     },
     "/auth/bairro/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Bairro"
+      ],
         "description": "",
         "parameters": [
           {
@@ -582,7 +634,9 @@
       }
     },
     "/auth/bairro": {
-      "get": {
+      "get": {"tags": [
+        "Bairro"
+      ],
         "description": "",
         "parameters": [
           {
@@ -602,7 +656,9 @@
       }
     },
     "/auth/bairros": {
-      "get": {
+      "get": {"tags": [
+        "Bairro"
+      ],
         "description": "",
         "parameters": [
           {
@@ -622,7 +678,9 @@
       }
     },
     "/auth/bairro/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Bairro"
+      ],
         "description": "",
         "parameters": [
           {
@@ -642,7 +700,9 @@
       }
     },
     "/auth/bairro/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Bairro"
+      ],
         "description": "",
         "parameters": [
           {
@@ -662,7 +722,9 @@
       }
     },
     "/auth/relatorio/cadastro": {
-      "post": {
+      "post": {"tags": [
+        "Relatorio"
+      ],
         "description": "",
         "parameters": [
           {
@@ -682,7 +744,9 @@
       }
     },
     "/auth/relatorio": {
-      "get": {
+      "get": {"tags": [
+        "Relatorio"
+      ],
         "description": "",
         "parameters": [
           {
@@ -702,7 +766,9 @@
       }
     },
     "/auth/relatorios": {
-      "get": {
+      "get": {"tags": [
+        "Relatorio"
+      ],
         "description": "",
         "parameters": [
           {
@@ -722,7 +788,9 @@
       }
     },
     "/auth/relatorio/alterar": {
-      "put": {
+      "put": {"tags": [
+        "Relatorio"
+      ],
         "description": "",
         "parameters": [
           {
@@ -742,7 +810,9 @@
       }
     },
     "/auth/relatorio/deletar": {
-      "delete": {
+      "delete": {"tags": [
+        "Relatorio"
+      ],
         "description": "",
         "parameters": [
           {
@@ -792,7 +862,7 @@
     "/pessoa/cadastro": {
       "post": {
         "tags": [
-          "Pessoa"
+          "// TODO VER PRQ TEM ISSO EM DOIS LUGARES"
         ],
         "description": "Descrição do endpoint",
         "produces": [
@@ -825,10 +895,12 @@
         }
       }
     },
+    
     "/pessoas": {
       "get": {
         "tags": [
-          "Pessoa"
+          
+          "// TODO VER PRQ TEM ISSO EM DOIS LUGARES"
         ],
         "description": "Retorna um array de pessoas.",
         "produces": [
