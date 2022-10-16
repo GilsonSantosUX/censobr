@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 
 import {
     Button, Flex, Image, Text, Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer,
@@ -7,15 +7,28 @@ import { useMediaContext } from "../../hook/useMediaContext.js";
 import { EditIcon, SmallAddIcon, DeleteIcon } from '@chakra-ui/icons'
 import logo from "../../dist/logo-black.svg"
 import { Papel } from "../../components/Papel/index.js";
+import { GetUser } from "../../fetchers/GetUser.js";
 
 
 export const Gestao = () => {
     const { isDesktop } = useMediaContext();
+    const [dataUser, setDataUser] = useState();
+
 
     function userLogout() {
         localStorage.removeItem("token");
         window.location.href = "/login"
     }
+
+    useEffect(() => {
+        (async function handleGetDataUser() {
+            const token = localStorage.getItem("token");
+            const userId = localStorage.getItem("userId");
+            const response = await GetUser(token, userId);
+            console.log('response', response);
+            setDataUser(response)
+        })()
+    })
 
     return (
         <>

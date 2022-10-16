@@ -20,7 +20,10 @@ function App() {
 
 
   useEffect(() => {
-    if (authenticate || window.location.pathname === "/login" || window.location.pathname === "/register") {
+    if (authenticate && (window.location.pathname === "/login" || window.location.pathname === "/register")) {
+      window.location.href = "/gestao"
+    }
+    else if (authenticate) {
       return;
     } else {
       window.location.href = "/login"

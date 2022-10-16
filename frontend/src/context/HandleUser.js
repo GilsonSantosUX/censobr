@@ -30,7 +30,9 @@ function AuthProvider({ children }) {
         if (autorizationAuth.status === 200) {
             let responseJson = await autorizationAuth.json();
             localStorage.setItem("token", responseJson.token);
+            localStorage.setItem("userId", responseJson.idusuario);
             setAuthenticate(true);
+            window.location.href = "/gestao"
         } else {
             setEmailAndPasswordInvalid(false);
         }
