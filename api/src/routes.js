@@ -14,15 +14,17 @@ const { createEntrevistado, getEntrevistadoAll, getEntrevistadoUnique, altEntrev
 const { createRegiao, getRegiaoAll, getRegiaoUnique, altRegiao, delRegiao } = require('@controller/regiaoController');
 const { createBairro, getBairroAll, getBairroUnique, altBairro, delBairro } = require('@controller/bairroController');
 const { createRelatorio, getRelatorioAll, getRelatorioUnique, altRelatorio, delRelatorio } = require('@controller/relatorioController');
+const { createPesquisa, getPesquisaAll, getPesquisaUnique, altPesquisa, delPesquisa } = require('@controller/pesquisaController');
+const { createPapel, getPapelAll, getPapelUnique, altPapel, delPapel } = require('@controller/papelController');
 
 // Routes Authentication
 
 router.post('/auth', authetication);
+router.post('/auth/usuario/cadastro', createUsuario);
 router.use(authMiddleware);
 router.get('/authenticate', authenticate);
 
 // Routes Usuario
-router.post('/auth/usuario/cadastro', createUsuario);
 router.get('/auth/usuario', getUsuarioUnique);
 router.get('/auth/usuarios', getUsuarioAll);
 router.put('/auth/usuario/alterar', altUsuario);
@@ -68,7 +70,21 @@ router.post('/auth/relatorio/cadastro',createRelatorio);
 router.get('/auth/relatorio',getRelatorioUnique);
 router.get('/auth/relatorios',getRelatorioAll);
 router.put('/auth/relatorio/alterar',altRelatorio);
-router.delete('/auth/relatorio/deletar',delRelatorio);
+router.delete('/auth/relatorio/deletar', delRelatorio);
+
+// Routes Pesquisa
+router.post('/auth/pesquisa/cadastro',createPesquisa);
+router.get('/auth/pesquisa',getPesquisaUnique);
+router.get('/auth/pesquisas',getPesquisaAll);
+router.put('/auth/pesquisa/alterar',altPesquisa);
+router.delete('/auth/pesquisa/deletar', delPesquisa);
+
+// Routes Papel
+router.post('/auth/papel/cadastro',createPapel);
+router.get('/auth/papel',getPapelUnique);
+router.get('/auth/papeis',getPapelAll);
+router.put('/auth/papel/alterar',altPapel);
+router.delete('/auth/papel/deletar',delPapel);
 
 // Router test Swagger
 router.get('/swagger', (req, res) => {

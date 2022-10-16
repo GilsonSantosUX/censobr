@@ -3,7 +3,7 @@ const { status } = require("@helper/Status");
 const { getUsuarioAuth } = require('@model/usuario');
 
 function token(params = {}) {
-    return jwt.sign(params, JSON.stringify(process.env.SECRET), { expiresIn: 86400 });
+    return jwt.sign(params, JSON.stringify(process.env.SECRET), { subject:`${params.idusuario}`, expiresIn: 86400 });
 }
 
 function authorization(data){
