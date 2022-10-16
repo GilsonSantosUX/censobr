@@ -1,6 +1,8 @@
 const prisma = require('@db');
 module.exports = {
 
+  // TODO analisar a necessidade do campo de email
+
   //#region  getEntrevistadoAll
   async getEntrevistadoAll() {
     try {
@@ -112,7 +114,7 @@ module.exports = {
 
   //#region createEntrevistado
   async createEntrevistado(data) {
-    const { fkpessoa, genero, datanascimento, idade, fkendereco, } = data;
+    const {nome, cpf, rg, genero, datanascimento, idade, pais, cep, estadoSigla, cidade, idbairro, logradouro, numero, complemento, } = data;
     try {
       const pessoa = await prisma.Pessoa.create({
         data: {
@@ -124,14 +126,13 @@ module.exports = {
 
       const endereco = await prisma.Endereco.create({
         data: {
-          idendereco,
           pais,
           cep,
           estadoSigla,
           estado,
           cidadeSigla,
           cidade,
-          fkbairro,
+          idbairro,
           logradouro,
           numero,
           complemento
@@ -164,12 +165,13 @@ module.exports = {
 
   //#region updateEntrevistado
   async updateEntrevistado(data) {
-    const { identrevistado, idpessoa, idendereco } = data;
+    const {nome, cpf, rg, genero, datanascimento, idade, pais, cep, estadoSigla, cidade, idbairro, logradouro, numero, complemento, } = data;
     try {
       const pessoa = await prisma.Pessoa.update({
         where: { idpessoa },
         data: {
           nome,
+          cpf,
           rg
         }
       });
@@ -217,18 +219,19 @@ module.exports = {
   },
   //#endregion updateEntrevistado
 
+  //TODO Verifica a necessidade de exclusão do entrevistado! Grupo
   //#region deleteEntrevistado
   async deleteEntrevistado(identrevistado) {
     const data = await prisma.Entrevistado.findUnique({ where: { identrevistado }, });
     try {
       if (!data) return false;
 
-      //TODO Corrigir Delete
+      // TODO se o grupo decidir manter a exclusão corrigir os erros(Melhorado)
       // const entrevistadodeletado = await prisma.Entrevistado.delete({ where: { identrevistado } })
       // const enderecoentrevistadodeletado = await prisma.Endereco.delete({ where: { identrevistado.idendereco } })
       // const pessoaentrevistadodeletado = await prisma.Pessoa.delete({ where: { identrevistado.idpessoa } })
       
-      //lixo
+      //replicado
       // return await prisma.Entrevistado.delete({
       //   where: { identrevistado },
       //   select: {
@@ -241,7 +244,7 @@ module.exports = {
       //       }
       //     },
       //   }
-      //});
+      // });
 
       return "sucesso";
       
