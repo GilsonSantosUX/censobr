@@ -1,15 +1,15 @@
-export const GetLogin = (email, password, name, cpf) => {
-    const response = fetch('https://censo-ufms.herokuapp.com/auth', {
+export const CreateUser = (email, senha, fkpapel, supervisor, nome, cpf, rg) => {
+    const response = fetch('https://censo-ufms.herokuapp.com/auth/usuario/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             "email": email,
-            "senha": password,
-            "fkpapel": 3,
-            "supervisor": 5,
-            "nome": name,
-            "cpf": "98765432106",
-            "rg": "001000001"
+            "senha": senha,
+            "fkpapel": fkpapel,
+            "supervisor": supervisor,
+            "nome": nome,
+            "cpf": cpf,
+            "rg": rg
         })
     }).then((data) => {
         console.log('the data', data);

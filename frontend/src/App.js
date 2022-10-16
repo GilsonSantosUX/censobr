@@ -20,9 +20,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log("the auth", authenticate)
-    console.log("the auth", window.location.pathname)
-    if (authenticate || window.location.pathname === "/login") {
+    if (authenticate || window.location.pathname === "/login" || window.location.pathname === "/register") {
       return;
     } else {
       window.location.href = "/login"
