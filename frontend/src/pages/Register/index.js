@@ -25,15 +25,6 @@ export const Register = () => {
 
     const { isDesktop, isMobile } = useMediaContext();
 
-    useEffect(() => {
-        console.log(`ther`, isMobile)
-        if (!authenticate) {
-            return;
-        } else {
-            window.location.href = "/home"
-        }
-
-    })
 
     return (
         <HStack h="100vh" justifyContent="space-between" >

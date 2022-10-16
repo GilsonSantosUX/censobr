@@ -15,15 +15,6 @@ export const Login = () => {
     const [inputLogin, setInputLogin] = useState();
     const [inputPassword, setInputPassword] = useState();
 
-    useEffect(() => {
-        if (!authenticate) {
-            return;
-        } else {
-            window.location.href = "/home"
-        }
-
-    }, [authenticate])
-
 
     const validLogin = (inputLogin, inputPassword) => {
         if (inputLogin && inputPassword) {
