@@ -9,16 +9,16 @@ datasource db {
 
 model Endereco {
   idendereco   Int            @id(map: "idendereco_pkey") @default(autoincrement())
-  pais         String         @unique @default("Brasil") @db.Char(50)
-  cep          Int            @unique
-  estadoSigla  String         @unique @default("MS") @db.Char(2)
-  estado       String         @unique @default("Mato Grosso do Sul") @db.Char(255)
-  cidadeSigla  String         @default("CG") @db.Char(2)
-  cidade       String         @default("Campo Grande") @db.Char(255)
+  pais         String         @default("Brasil") @db.VarChar(50)
+  cep          Int
+  estadoSigla  String         @default("MS") @db.VarChar(2)
+  estado       String         @default("Mato Grosso do Sul") @db.VarChar(255)
+  cidadeSigla  String         @default("CG") @db.VarChar(2)
+  cidade       String         @default("Campo Grande") @db.VarChar(255)
   fkbairro     Int            @default(autoincrement())
-  logradouro   String         @db.Char(255)
+  logradouro   String         @db.VarChar(255)
   numero       Int
-  complemento  String         @db.Char(255)
+  complemento  String         @db.VarChar(255)
   Bairro       Bairro         @relation(fields: [fkbairro], references: [idbairro], onDelete: NoAction, onUpdate: NoAction, map: "Bairro")
   Entrevistado Entrevistado[]
 }
@@ -38,7 +38,7 @@ model Entrevistado {
 model Papel {
   idpapel   Int       @id(map: "idpapel_pkey") @default(autoincrement())
   sigla     String    @unique @db.Char(2)
-  descricao String    @db.Char(80)
+  descricao String    @db.VarChar(80)
   Usuario   Usuario[]
 }
 
@@ -57,9 +57,9 @@ model Pesquisa {
 
 model Pessoa {
   idpessoa     Int            @id(map: "idpessoa_pkey") @default(autoincrement())
-  nome         String         @db.Char(150)
-  cpf          String         @unique @db.Char(11)
-  rg           String         @unique @db.Char(9)
+  nome         String         @db.VarChar(150)
+  cpf          String         @unique @db.VarChar(11)
+  rg           String         @unique @db.VarChar(9)
   Entrevistado Entrevistado[]
   Usuario      Usuario[]
 }
@@ -69,7 +69,7 @@ model Regiao {
   pkestado Int    @default(autoincrement())
   pkcidade Int    @default(autoincrement())
   fkbairro Int    @default(autoincrement())
-  zona     String @db.Char(80)
+  zona     String @db.VarChar(80)
   Bairro   Bairro @relation(fields: [fkbairro], references: [idbairro], onDelete: NoAction, onUpdate: NoAction, map: "Bairro_fk")
 }
 
@@ -81,22 +81,22 @@ model Relatorio {
 }
 
 model Usuario {
-  idusuario     Int        @id(map: "idusuario_pkey") @default(autoincrement())
-  senha         String     @unique @db.Char(155)
-  email         String     @unique @db.Char(155)
-  fkpapel       Int        @default(autoincrement())
-  fkpessoa      Int        @default(autoincrement())
-  supervisor    Int        @default(autoincrement())
-  Papel         Papel      @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
-  Pessoa        Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
-  Usuario       Usuario    @relation("UsuarioToUsuario", fields: [supervisor], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
-  Pesquisa      Pesquisa[]
-  Supervisiona  Usuario[]  @relation("UsuarioToUsuario")
+  idusuario    Int        @id(map: "idusuario_pkey") @default(autoincrement())
+  senha        String     @unique @db.VarChar(155)
+  email        String     @unique @db.VarChar(155)
+  fkpapel      Int        @default(autoincrement())
+  fkpessoa     Int        @default(autoincrement())
+  supervisor   Int        @default(autoincrement())
+  Papel        Papel      @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
+  Pessoa       Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
+  Usuario      Usuario    @relation("UsuarioToUsuario", fields: [supervisor], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
+  Pesquisa     Pesquisa[]
+  Supervisiona Usuario[]  @relation("UsuarioToUsuario")
 }
 
 model Bairro {
   idbairro Int        @id(map: "idbairro_pkey") @default(autoincrement())
-  nome     String     @db.Char(255)
+  nome     String     @db.VarChar(255)
   Endereco Endereco[]
   Regiao   Regiao[]
 }
