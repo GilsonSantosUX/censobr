@@ -15,6 +15,7 @@ const { createRegiao, getRegiaoAll, getRegiaoUnique, altRegiao, delRegiao } = re
 const { createBairro, getBairroAll, getBairroUnique, altBairro, delBairro } = require('@controller/bairroController');
 const { createRelatorio, getRelatorioAll, getRelatorioUnique, altRelatorio, delRelatorio } = require('@controller/relatorioController');
 const { createPesquisa, getPesquisaAll, getPesquisaUnique, altPesquisa, delPesquisa } = require('@controller/pesquisaController');
+const { createPapel, getPapelAll, getPapelUnique, altPapel, delPapel } = require('@controller/papelController');
 
 // Routes Authentication
 
@@ -76,7 +77,14 @@ router.post('/pesquisa/cadastro',createPesquisa);
 router.get('/pesquisa',getPesquisaUnique);
 router.get('/pesquisas',getPesquisaAll);
 router.put('/pesquisa/alterar',altPesquisa);
-router.delete('/pesquisa/deletar',delPesquisa);
+router.delete('/pesquisa/deletar', delPesquisa);
+
+// Routes Papel
+router.post('/papel/cadastro',createPapel);
+router.get('/papel',getPapelUnique);
+router.get('/papeis',getPapelAll);
+router.put('/papel/alterar',altPapel);
+router.delete('/papel/deletar',delPapel);
 
 // Router test Swagger
 router.get('/swagger', (req, res) => {
