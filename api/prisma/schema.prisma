@@ -81,17 +81,17 @@ model Relatorio {
 }
 
 model Usuario {
-  idusuario    Int        @id(map: "idusuario_pkey") @default(autoincrement())
-  senha        String     @unique @db.VarChar(155)
-  email        String     @unique @db.VarChar(155)
-  fkpapel      Int        @default(autoincrement())
-  fkpessoa     Int        @default(autoincrement())
-  supervisor   Int        @default(autoincrement())
-  Papel        Papel      @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
-  Pessoa       Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
-  Usuario      Usuario    @relation("UsuarioToUsuario", fields: [supervisor], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
-  Pesquisa     Pesquisa[]
-  Supervisiona Usuario[]  @relation("UsuarioToUsuario")
+  idusuario     Int        @id(map: "idusuario_pkey") @default(autoincrement())
+  senha         String     @unique @db.VarChar(155)
+  email         String     @unique @db.VarChar(155)
+  fkpapel       Int        @default(autoincrement())
+  fkpessoa      Int        @default(autoincrement())
+  supervisor    Int        @default(autoincrement())
+  Papel         Papel      @relation(fields: [fkpapel], references: [idpapel], onDelete: NoAction, onUpdate: NoAction, map: "Papel_fk")
+  Pessoa        Pessoa     @relation(fields: [fkpessoa], references: [idpessoa], onDelete: NoAction, onUpdate: NoAction, map: "Pessoa_fk")
+  Usuario       Usuario    @relation("UsuarioToUsuario", fields: [supervisor], references: [idusuario], onDelete: NoAction, onUpdate: NoAction, map: "Supervisor_fk")
+  Pesquisa      Pesquisa[]
+  Supervisiona  Usuario[]  @relation("UsuarioToUsuario")
 }
 
 model Bairro {
