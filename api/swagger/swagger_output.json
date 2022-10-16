@@ -52,9 +52,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -62,9 +59,7 @@
       }
     },
     "/auth/usuario/cadastro": {
-      "post": {"tags": [
-        "Usuario"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -74,9 +69,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -84,9 +76,7 @@
       }
     },
     "/auth/usuario": {
-      "get": {"tags": [
-        "Usuario"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -96,9 +86,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -106,9 +93,7 @@
       }
     },
     "/auth/usuarios": {
-      "get": {"tags": [
-        "Usuario"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -118,9 +103,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -128,9 +110,7 @@
       }
     },
     "/auth/usuario/alterar": {
-      "put": {"tags": [
-        "Usuario"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -140,9 +120,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -150,9 +127,7 @@
       }
     },
     "/auth/usuario/deletar": {
-      "delete": {"tags": [
-        "Usuario"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -162,9 +137,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -172,9 +144,7 @@
       }
     },
     "/auth/pessoa/cadastro": {
-      "post": {"tags": [
-        "Pessoa"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -184,9 +154,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -194,9 +161,7 @@
       }
     },
     "/auth/pessoa": {
-      "get": {"tags": [
-        "Pessoa"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -206,9 +171,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -216,9 +178,7 @@
       }
     },
     "/auth/pessoas": {
-      "get": {"tags": [
-        "Pessoa"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -228,9 +188,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -238,9 +195,7 @@
       }
     },
     "/auth/pessoa/alterar": {
-      "put": {"tags": [
-        "Pessoa"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -250,9 +205,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -260,9 +212,7 @@
       }
     },
     "/auth/pessoa/deletar": {
-      "delete": {"tags": [
-        "Pessoa"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -272,9 +222,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -282,9 +229,7 @@
       }
     },
     "/auth/entrevistado/cadastro": {
-      "post": {"tags": [
-        "Entrevistado"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -294,9 +239,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -304,9 +246,7 @@
       }
     },
     "/auth/entrevistados": {
-      "get": {"tags": [
-        "Entrevistado"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -316,9 +256,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -326,9 +263,7 @@
       }
     },
     "/auth/entrevistado": {
-      "get": {"tags": [
-        "Entrevistado"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -338,9 +273,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -348,9 +280,7 @@
       }
     },
     "/auth/entrevistado/alterar": {
-      "put": {"tags": [
-        "Entrevistado"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -360,9 +290,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -370,9 +297,7 @@
       }
     },
     "/auth/entrevistado/deletar": {
-      "delete": {"tags": [
-        "Entrevistado"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -382,9 +307,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -392,9 +314,7 @@
       }
     },
     "/auth/endereco/cadastro": {
-      "post": {"tags": [
-        "Endereco"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -404,9 +324,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -414,9 +331,7 @@
       }
     },
     "/auth/endereco": {
-      "get": {"tags": [
-        "Endereco"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -426,9 +341,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -436,9 +348,7 @@
       }
     },
     "/auth/enderecos": {
-      "get": {"tags": [
-        "Endereco"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -448,9 +358,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -458,9 +365,7 @@
       }
     },
     "/auth/endereco/alterar": {
-      "put": {"tags": [
-        "Endereco"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -470,9 +375,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -480,9 +382,7 @@
       }
     },
     "/auth/endereco/deletar": {
-      "delete": {"tags": [
-        "Endereco"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -492,9 +392,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -502,9 +399,7 @@
       }
     },
     "/auth/regiao/cadastro": {
-      "post": {"tags": [
-        "Regiao"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -514,9 +409,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -524,9 +416,7 @@
       }
     },
     "/auth/regiao": {
-      "get": {"tags": [
-        "Regiao"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -536,9 +426,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -546,9 +433,7 @@
       }
     },
     "/auth/regioes": {
-      "get": {"tags": [
-        "Regiao"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -558,9 +443,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -568,9 +450,7 @@
       }
     },
     "/auth/regiao/alterar": {
-      "put": {"tags": [
-        "Regiao"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -580,9 +460,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -590,9 +467,7 @@
       }
     },
     "/auth/regiao/deletar": {
-      "delete": {"tags": [
-        "Regiao"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -602,9 +477,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -612,9 +484,7 @@
       }
     },
     "/auth/bairro/cadastro": {
-      "post": {"tags": [
-        "Bairro"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -624,9 +494,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -634,9 +501,7 @@
       }
     },
     "/auth/bairro": {
-      "get": {"tags": [
-        "Bairro"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -646,9 +511,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -656,9 +518,7 @@
       }
     },
     "/auth/bairros": {
-      "get": {"tags": [
-        "Bairro"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -668,9 +528,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -678,9 +535,7 @@
       }
     },
     "/auth/bairro/alterar": {
-      "put": {"tags": [
-        "Bairro"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -690,9 +545,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -700,9 +552,7 @@
       }
     },
     "/auth/bairro/deletar": {
-      "delete": {"tags": [
-        "Bairro"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -712,9 +562,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -722,9 +569,7 @@
       }
     },
     "/auth/relatorio/cadastro": {
-      "post": {"tags": [
-        "Relatorio"
-      ],
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -734,9 +579,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -744,9 +586,7 @@
       }
     },
     "/auth/relatorio": {
-      "get": {"tags": [
-        "Relatorio"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -756,9 +596,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -766,9 +603,7 @@
       }
     },
     "/auth/relatorios": {
-      "get": {"tags": [
-        "Relatorio"
-      ],
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -778,9 +613,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -788,9 +620,7 @@
       }
     },
     "/auth/relatorio/alterar": {
-      "put": {"tags": [
-        "Relatorio"
-      ],
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -800,9 +630,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           }
@@ -810,9 +637,7 @@
       }
     },
     "/auth/relatorio/deletar": {
-      "delete": {"tags": [
-        "Relatorio"
-      ],
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -822,9 +647,176 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/pesquisa/cadastro": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/pesquisa": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/pesquisas": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/pesquisa/alterar": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/pesquisa/deletar": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/papel/cadastro": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/papel": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/papeis": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/papel/alterar": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/papel/deletar": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
           "401": {
             "description": "Unauthorized"
           }
@@ -859,10 +851,292 @@
         }
       }
     },
+    "/papel/cadastro": {
+      "post": {
+        "tags": [
+          "Papel"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "createPapel",
+            "in": "body",
+            "description": "Informações da Papel.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            },
+            "description": "Papel cadastrada!."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/papeis": {
+      "get": {
+        "tags": [
+          "Papel"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "getPapelAll",
+            "in": "body",
+            "description": "Informações da Papel.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Papel"
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Lista de papels!."
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/papel": {
+      "get": {
+        "tags": [
+          "Papel"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "getPapelUnique",
+            "in": "body",
+            "description": "Informações da Papel.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/papel/deletar": {
+      "delete": {
+        "tags": [
+          "Papel"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "delPapel",
+            "in": "body",
+            "description": "Informações da Papel.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Papel"
+            },
+            "description": "Papel Deletada!."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pesquisa/cadastro": {
+      "post": {
+        "tags": [
+          "Pesquisa"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "createPesquisa",
+            "in": "body",
+            "description": "Informações da Pesquisa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            },
+            "description": "Pesquisa cadastrada!."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/pesquisas": {
+      "get": {
+        "tags": [
+          "Pesquisa"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "getPesquisaAll",
+            "in": "body",
+            "description": "Informações da Pesquisa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pesquisa"
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Lista de pesquisas!."
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/pesquisa": {
+      "get": {
+        "tags": [
+          "Pesquisa"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "getPesquisaUnique",
+            "in": "body",
+            "description": "Informações da Pesquisa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pesquisa/deletar": {
+      "delete": {
+        "tags": [
+          "Pesquisa"
+        ],
+        "description": "Descrição do endpoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "delPesquisa",
+            "in": "body",
+            "description": "Informações da Pesquisa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pesquisa"
+            },
+            "description": "Pesquisa Deletada!."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/pessoa/cadastro": {
       "post": {
         "tags": [
-          "// TODO VER PRQ TEM ISSO EM DOIS LUGARES"
+          "Pessoa"
         ],
         "description": "Descrição do endpoint",
         "produces": [
@@ -895,12 +1169,10 @@
         }
       }
     },
-    
     "/pessoas": {
       "get": {
         "tags": [
-          
-          "// TODO VER PRQ TEM ISSO EM DOIS LUGARES"
+          "Pessoa"
         ],
         "description": "Retorna um array de pessoas.",
         "produces": [

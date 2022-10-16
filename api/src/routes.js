@@ -20,11 +20,11 @@ const { createPapel, getPapelAll, getPapelUnique, altPapel, delPapel } = require
 // Routes Authentication
 
 router.post('/auth', authetication);
+router.post('/auth/usuario/cadastro', createUsuario);
 router.use(authMiddleware);
 router.get('/authenticate', authenticate);
 
 // Routes Usuario
-router.post('/auth/usuario/cadastro', createUsuario);
 router.get('/auth/usuario', getUsuarioUnique);
 router.get('/auth/usuarios', getUsuarioAll);
 router.put('/auth/usuario/alterar', altUsuario);
@@ -73,18 +73,18 @@ router.put('/auth/relatorio/alterar',altRelatorio);
 router.delete('/auth/relatorio/deletar', delRelatorio);
 
 // Routes Pesquisa
-router.post('/pesquisa/cadastro',createPesquisa);
-router.get('/pesquisa',getPesquisaUnique);
-router.get('/pesquisas',getPesquisaAll);
-router.put('/pesquisa/alterar',altPesquisa);
-router.delete('/pesquisa/deletar', delPesquisa);
+router.post('/auth/pesquisa/cadastro',createPesquisa);
+router.get('/auth/pesquisa',getPesquisaUnique);
+router.get('/auth/pesquisas',getPesquisaAll);
+router.put('/auth/pesquisa/alterar',altPesquisa);
+router.delete('/auth/pesquisa/deletar', delPesquisa);
 
 // Routes Papel
-router.post('/papel/cadastro',createPapel);
-router.get('/papel',getPapelUnique);
-router.get('/papeis',getPapelAll);
-router.put('/papel/alterar',altPapel);
-router.delete('/papel/deletar',delPapel);
+router.post('/auth/papel/cadastro',createPapel);
+router.get('/auth/papel',getPapelUnique);
+router.get('/auth/papeis',getPapelAll);
+router.put('/auth/papel/alterar',altPapel);
+router.delete('/auth/papel/deletar',delPapel);
 
 // Router test Swagger
 router.get('/swagger', (req, res) => {

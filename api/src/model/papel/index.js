@@ -7,11 +7,12 @@ module.exports = {
       return await prisma.Papel.findMany(
         {
           select: {
+            idpapel:true,
             sigla: true,
             descricao: true
           },
           orderBy: {
-            nome: 'asc',
+            sigla: 'asc',
           }
         }
       );
@@ -75,17 +76,26 @@ module.exports = {
 
   //#region updatePapel
   async updatePapel(data) {
-    const { sigla, descricao } = data;
+    const { idpapel, sigla, descricao } = data;
+    const papel = await prisma.Papel.findUnique({
+        where: { idpapel },
+        select: {
+          sigla: true,
+          descricao: true
+        }
+      });
+    console.log(papel);
     try {
       return await prisma.Papel.update({
         where: { idpapel },
         data: {
           sigla,
-          descricao,
+          descricao
         }
       });
     } catch (error) {
       throw console.log({
+        error,
         name: 'Prisma error',
         message: "https://www.prisma.io/docs/reference/api-reference/error-reference#" + error.code,
         code: error.code,
@@ -97,10 +107,11 @@ module.exports = {
   //#endregion updatePapel
 
   //#region deletePapel
-  async deletePapel(idpapel) {
-    const data = await prisma.Papel.findUnique({ where: { idpapel }, });
+  async deletePapel(data) {
+    let {idpapel} = data;
+    const papel = await prisma.Papel.findUnique({ where: { idpapel } });
     try {
-      if (!data) return false;
+      if (!papel) return false;
       return await prisma.Papel.delete({
         where: { idpapel },
         select: {
