@@ -3,7 +3,7 @@ import { Alert, AlertIcon } from '@chakra-ui/react'
 import { GetLogin } from "../fetchers/GetLogin.js"
 import { GetAuthUser } from "../fetchers/GetAuthUser.js"
 
-const Context = createContext();
+const UserContext = createContext();
 
 function AuthProvider({ children }) {
     const [authenticate, setAuthenticate] = useState(false);
@@ -16,23 +16,21 @@ function AuthProvider({ children }) {
             if (auth) {
                 const ok = await GetAuthUser(auth)
                 ok.data ? setAuthenticate(true) : setAuthenticate(false);
+                setLoadingoading(false);
             } else {
-                setAuthenticate(false);
-            }
 
-            setLoadingoading(false);
+                setLoadingoading(false);
+            }
         })()
-    })
+    }, [authenticate])
 
     async function handleLogin(email, password) {
-        console.log("email", email)
-        console.log("senha", password)
         const autorizationAuth = await GetLogin(email, password);
-        console.log("auth", autorizationAuth)
-        if (autorizationAuth) {
-            localStorage.setItem("token", autorizationAuth.token)
-            console.log("token", autorizationAuth.token)
-            window.location.href = "/home"
+        console.log(autorizationAuth)
+        if (autorizationAuth.status === 200) {
+            let responseJson = await autorizationAuth.json();
+            localStorage.setItem("token", responseJson.token);
+            setAuthenticate(true);
         } else {
             setEmailAndPasswordInvalid(false);
         }
@@ -47,13 +45,13 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <Context.Provider value={{ authenticate, handleLogin, loading, emailAndPasswordInvalid, setEmailAndPasswordInvalid }}>
+        <UserContext.Provider value={{ authenticate, handleLogin, loading, emailAndPasswordInvalid, setEmailAndPasswordInvalid }}>
             {children}
-        </Context.Provider>
+        </UserContext.Provider>
     )
 }
 
 
-export { Context, AuthProvider };
+export { UserContext, AuthProvider };
 
 
