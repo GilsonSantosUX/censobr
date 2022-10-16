@@ -14,6 +14,7 @@ const { createEntrevistado, getEntrevistadoAll, getEntrevistadoUnique, altEntrev
 const { createRegiao, getRegiaoAll, getRegiaoUnique, altRegiao, delRegiao } = require('@controller/regiaoController');
 const { createBairro, getBairroAll, getBairroUnique, altBairro, delBairro } = require('@controller/bairroController');
 const { createRelatorio, getRelatorioAll, getRelatorioUnique, altRelatorio, delRelatorio } = require('@controller/relatorioController');
+const { createPesquisa, getPesquisaAll, getPesquisaUnique, altPesquisa, delPesquisa } = require('@controller/pesquisaController');
 
 // Routes Authentication
 
@@ -68,7 +69,14 @@ router.post('/auth/relatorio/cadastro',createRelatorio);
 router.get('/auth/relatorio',getRelatorioUnique);
 router.get('/auth/relatorios',getRelatorioAll);
 router.put('/auth/relatorio/alterar',altRelatorio);
-router.delete('/auth/relatorio/deletar',delRelatorio);
+router.delete('/auth/relatorio/deletar', delRelatorio);
+
+// Routes Pesquisa
+router.post('/pesquisa/cadastro',createPesquisa);
+router.get('/pesquisa',getPesquisaUnique);
+router.get('/pesquisas',getPesquisaAll);
+router.put('/pesquisa/alterar',altPesquisa);
+router.delete('/pesquisa/deletar',delPesquisa);
 
 // Router test Swagger
 router.get('/swagger', (req, res) => {
