@@ -13,16 +13,105 @@ Um censo - ou recenseamento - sobre o âmbito acadêmico. Coleta informações c
 
 ## O que é o CensoUFMS?
 
-CensoUFMS é um sistema web baseado nos métodos de pesquisa do censo demográfico do IBGE - Instituto Brasileiro de Geografia e Estatística. 
+CensoUFMS é um sistema web baseado nos métodos de pesquisa do censo demográfico do IBGE - Instituto Brasileiro de Geografia e Estatística.
 O sistema é responsável por registrar as respostas dos candidatos da pesquisa, como também gera relatórios específicos e gerais. Possui um acompanhamento em tempo real por meio de gráficos e também é capaz de cadastrar novos pesquisadores.
+
+### Ferramentas usadas
+- Nodejs
+- Postgress
+- React
+- Prisma
+- JWT
+
+### Pré requisitos
+
+- Node@v17.0.1
 
 ## Instalação
 
-(Como executar o CensoUFMS)
+#### Configurações de ambiente
+
+
+```sh
+git clone https://github.com/CaiqueRamos/grupo-1---cs.git
+cd grupo-1---cs
+cd api
+And 
+cd frontend
+```
+
+Criar arquivo .env na raiz do projeto api e incluir os dados abaixo:
+
+```sh
+DATABASE_URL=postgres://jhknauumdqatmf:c62986f10995a9f07c1aa5a8ff49118adef37f139fbb2a9c8966fa087550f865@ec2-3-219-19-205.compute-1.amazonaws.com:5432/d8n9fvinrsia2j
+PORT=3001
+SECRET=c15a43fe1ebd753eb5249b30bdba2fe0
+```
+
+**Nota**: Banco de dados rodando no heroku.
+
+### API - Back-End
+
+```sh
+cd api
+npm install
+npm run dev
+```
+Abra o browser no <http://localhost:3001/>
+Para acessar a documentação das rotas acesse http://localhost:3001/docs
+
+**Extra**:Caso queira ver as informações do banco de dados siga os passos abaixo:
+
+```sh
+cd api
+npx prisma studio 
+```
+Com esse comando ele irá abrir um painel do Prisma para visualizar as informações do banco de dados, acessar <http://localhost:5555/>
+### Front-End
+
+```sh
+cd frontend
+npm install
+npm run start
+```
+
+Abra o browser no <http://localhost:3000/>
+
 
 ## Funcionalidades
 
-(Passo a passo de todas as funções do CensoUFMS)
+### Entregas da sprint 2
+
+#### Historia do usuário
+
+**Sistema**
+
+- [x] Login por e-mail e senha
+- [x] Cadastro de novo usuário
+- [x] Autenticação JWT nas rotas internas
+
+**Gerente Geral**
+
+Cadastrar, alterar, excluir ou desativar seções, cadastrar, excluir ou desativar todos os tipos de usuários internos, ter acesso ao relatórios do sistema, cadastrar, alterar, excluir questionários.
+
+- [x] Consulta usuário
+- [x] Consulta todos os usuários
+- [x] Cadastro de usuário
+- [x] Alteração de usuário
+- [x] Deleção de usuário
+
+
+**Gerente Seção**
+
+Criar novos usuários que possuam todos os poderes de acordo com o papel atribuído, melhorar ou criar novas pesquisas de acordo com a demanda.
+
+- [x] Consulta usuário
+- [x] Consulta todos os usuários da sua seção
+- [x] Cadastro de entrevistador
+- [x] Alteração de informações proprias e de usuários da sua seção
+- [x] Deleção de usuário da sua seção
+
+
 
 ## Aplicação
 
