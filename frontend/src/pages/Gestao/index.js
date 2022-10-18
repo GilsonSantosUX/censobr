@@ -92,8 +92,8 @@ export const Gestao = () => {
 
     const handleDelete = async (id, cpf) => {
         const response = await DeleteUser(token, id, cpf);
-        console.log(`the response`, response);
-        // window.location.reload();
+        console.log(response?.data);
+        window.location.reload();
     }
 
     return (
@@ -230,7 +230,7 @@ export const Gestao = () => {
                                     {
                                         allUsers.data.map((e) => {
                                             return (
-                                                <Tr>
+                                                <Tr key={e.idusuario}>
                                                     <Td>
                                                         <Box>
                                                             <Text fontWeight="bold">{e.Pessoa.nome}</Text>
@@ -244,7 +244,7 @@ export const Gestao = () => {
                                                     <Td w="30px">
                                                         <Flex justifyContent="space-around">
                                                             {/* <EditIcon w={5} h={5} mr="10px" /> */}
-                                                            {/* <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" /> */}
+                                                            {<DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" />}
                                                         </Flex>
                                                     </Td>
                                                 </Tr>

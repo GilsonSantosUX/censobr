@@ -21,19 +21,10 @@ function App() {
 
   useEffect(() => {
     const auth = localStorage.getItem("token");
-    if (auth && window.location.pathname === "/login") {
-      window.location.href = "/gestao"
-    }
-    else if (auth && window.location.pathname === "/gestao") {
-      return;
-    }
-    else if (!auth && window.location.pathname === "/login") {
-      return;
-    }
-    else if (!auth && window.location.pathname === "/gestao") {
+    // console.log(auth);
+    if (!auth && window.location.pathname === "/gestao") {
       window.location.href = "/login"
     }
-
   }, [])
 
   return (
