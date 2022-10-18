@@ -1,5 +1,25 @@
 import React, { useContext, useEffect, useState } from "react"
-
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    Select,
+    Checkbox,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+    Link,
+    Alert,
+    Input
+} from '@chakra-ui/react'
+import { UserContext } from "../../context/HandleUser"
+// import { Input } from "../../components/Input/index.js"
+import { DeleteUser } from "../../fetchers/DeleteUser"
 import {
     Button, Flex, Image, Text, Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer,
 } from '@chakra-ui/react'
@@ -8,12 +28,31 @@ import { EditIcon, SmallAddIcon, DeleteIcon } from '@chakra-ui/icons'
 import logo from "../../dist/logo-black.svg"
 import { Papel } from "../../components/Papel/index.js";
 import { GetUser } from "../../fetchers/GetUser.js";
-
+import { GetAll } from "../../fetchers/GetAll.js";
+import { CreateUser } from "../../fetchers/CreateUser";
+import { formatCPF } from '@brazilian-utils/brazilian-utils';
+import { formatRg } from "../../helpers/format.js"
+import iconFirstAcess from "../../dist/iconFirstAcess.svg"
 
 export const Gestao = () => {
     const { isDesktop } = useMediaContext();
-    const [dataUser, setDataUser] = useState();
+    const [user, setUser] = useState();
+    const [allUsers, setAllUsers] = useState();
+    const [listenForm, setListemForm] = useState();
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
+    // const { authenticate, emailAndPasswordInvalid } = useContext(UserContext);
+
+    const [inputName, setInputName] = useState();
+    const [cpf, setCpf] = useState();
+    const [rg, setRg] = useState();
+    const [papel, setPapel] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
+    const [handleCheckbox, setHandleCheckBox] = useState();
+    const [token, setToken] = useState();
+    const [error, setError] = useState(false);
 
     function userLogout() {
         localStorage.removeItem("token");
@@ -25,13 +64,33 @@ export const Gestao = () => {
             const token = localStorage.getItem("token");
             const userId = localStorage.getItem("userId");
             const response = await GetUser(token, userId);
+            const responseUser = await GetAll(token)
+            setToken(token);
+            setUser(response);
+            setAllUsers(responseUser);
             console.log('response', response);
-            setDataUser(response)
+            console.log('responseUser', responseUser);
         })()
-    })
+    }, [listenForm])
+
+    const handleSubmit = () => {
+        if (inputName && cpf && rg && papel && email && password && confirmPassword && handleCheckbox) {
+            CreateUser(email, password, parseInt(papel), 2, inputName, cpf, rg, token);
+            setListemForm(true);
+            window.location.reload();
+        } else {
+            setError(true);
+        }
+    }
+
+    const handleDelete = async (id, cpf) => {
+        const response = await DeleteUser(token, id, cpf);
+        console.log(`the response`, response);
+        // window.location.reload();
+    }
 
     return (
-        <>
+        user && allUsers && (<>
             <Flex p="19px" borderBottom="solid 0.1px grey" justifyContent='space-between'>
                 <Flex>
                     <Image src={logo} />
@@ -45,8 +104,8 @@ export const Gestao = () => {
                 <Flex>
                     <Flex>
                         <Box>
-                            <Text fontWeight='bold'>Sagun Adebayo</Text>
-                            <Text>Entrevistador</Text>
+                            <Text fontWeight='bold'>{user.data.Pessoa.nome}</Text>
+                            <Text>{user.data.Papel.descricao}</Text>
                         </Box>
                         <Image
                             mx="12px"
@@ -73,8 +132,80 @@ export const Gestao = () => {
                     <Text fontSize='20px'>Listagem de usuários</Text>
                     <Box>
                         <Button mr="10px" border='solid 1px grey' color="grey">Exportar  <EditIcon w={5} h={5} ml="10px" /></Button>
-                        <Button bgColor="#00A954" color='white'>Novo <SmallAddIcon w={5} h={5} ml="5px" /></Button>
+                        <Button bgColor="#00A954" color='white' onClick={onOpen}>Novo <SmallAddIcon w={5} h={5} ml="5px" /></Button>
                     </Box>
+                    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+                        <ModalOverlay />
+                        <ModalContent>
+                            <ModalHeader>Adicionar Usuário</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody bgColor="#007F3F">
+                                <Box >
+                                    <Box mb="20px">
+                                        <Text fontSize="32px" fontWeight="bold" color="white">Novo usuário de acesso</Text>
+                                        <Text fontSize="18px" color="white" >Consulte uma pessoa com perfil de gestor para liberação do cadastro!</Text>
+                                    </Box>
+                                    <Box mb="18px">
+                                        <Text color="white">{"Nome"}</Text>
+                                        <Input type={"text"} value={inputName} onChange={e => setInputName(e.target.value)} placeholder={"Nome do usuário"} bgColor="white" />
+                                    </Box>
+                                    <Box mb="18px">
+                                        <Flex justifyContent='space-between'>
+                                            <Box w='90%' mr='10px'>
+                                                <Text color="white">{"CPF"}</Text>
+                                                <Input type={"text"} value={cpf} onChange={e => setCpf(e.target.value)} placeholder={"00000000000"} bgColor="white" />
+                                            </Box>
+                                            <Box w='90%' ml='10px'>
+                                                <Text color="white">{"RG"}</Text>
+                                                <Input type={"text"} value={rg} onChange={e => setRg(e.target.value)} placeholder={"000000000"} bgColor="white" />
+                                            </Box>
+                                        </Flex>
+                                    </Box>
+                                    <Flex justifyContent='space-between' mb="18px">
+                                        <Box w="full">
+                                            <Text color="white">{"Papel"}</Text>
+                                            <Select placeholder='Selecione o papel' bgColor="white" cursor={'pointer'} onChange={e => setPapel(e.target.value)} value={papel}>
+                                                <option value={1}>MS</option>
+                                                <option value={2}>GG</option>
+                                                <option value={3}>GS</option>
+                                                <option value={4}>ER</option>
+                                                <option value={5}>ET</option>
+                                            </Select>
+                                        </Box>
+                                    </Flex>
+                                    <Box mb="18px">
+                                        <Text color="white">{"E-mail"}</Text>
+                                        <Input type={"text"} value={email} onChange={e => setEmail(e.target.value)} placeholder={"Informe o e-mail"} bgColor="white" />
+                                    </Box>
+                                    <Box mb="18px">
+                                        <Text color="white">{"Senha"}</Text>
+                                        <Input type={"password"} value={password} onChange={e => setPassword(e.target.value)} placeholder={"Informe sua senha"} bgColor="white" />
+                                    </Box>
+                                    <Box mb={isDesktop ? "18px" : '40px'}>
+                                        <Text color="white">{"Confirme sua senha"}</Text>
+                                        <Input type={"password"} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder={"Confirme sua senha"} bgColor="white" />
+                                    </Box>
+                                    <Checkbox size='md' colorScheme='green' mb="18px" color="white" isChecked={handleCheckbox} onChange={(e) => { setHandleCheckBox(e.target.checked) }}>
+                                        Aceito os termos de uso (Link para os termos de uso)
+                                    </Checkbox>
+                                    {error && <Alert status='error' mb="10px">
+                                        <AlertIcon />
+                                        <AlertTitle>Houve um erro!</AlertTitle>
+                                        <AlertDescription>Verifique o checkbox e seus dados</AlertDescription>
+                                    </Alert>}
+                                    <Flex w="full" justifyContent="center"><Link href="/login" color="white" mr="5px">Tenho Cadastro</Link> <Image src={iconFirstAcess} /></Flex>
+
+                                </Box>
+                            </ModalBody>
+
+                            <ModalFooter>
+                                <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                    Cancelar
+                                </Button>
+                                <Button variant='ghost' onClick={handleSubmit}>Salvar</Button>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>
                 </Flex>
                 <TableContainer border='solid 0.1px grey'>
                     <Table variant='simple' >
@@ -87,118 +218,34 @@ export const Gestao = () => {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="red" textContent="MS" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="green" textContent="GG" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="yellow" textContent="GS" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="blue" textContent="ER" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="blue" textContent="ER" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Nome entrevistador</Text>
-                                        <Text>jeremy@chakra-ui.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>
-                                    <Papel color="blue" textContent="ER" />
-                                </Td>
-                                <Td>Nome Supervisor</Td>
-                                <Td w="30px">
-                                    <Flex justifyContent="space-around">
-                                        <EditIcon w={5} h={5} mr="10px" />
-                                        <DeleteIcon w={5} h={5} ml="10px" color="red" />
-                                    </Flex>
-                                </Td>
-                            </Tr>
+                            {
+                                allUsers.data.map((e) => {
+                                    return (
+                                        <Tr>
+                                            <Td>
+                                                <Box>
+                                                    <Text fontWeight="bold">{e.Pessoa.nome}</Text>
+                                                    <Text>{e.email}</Text>
+                                                </Box>
+                                            </Td>
+                                            <Td>
+                                                <Papel textContent={e.Papel.sigla} />
+                                            </Td>
+                                            <Td>{user.data.Pessoa.nome}</Td>
+                                            <Td w="30px">
+                                                <Flex justifyContent="space-around">
+                                                    {/* <EditIcon w={5} h={5} mr="10px" /> */}
+                                                    <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" />
+                                                </Flex>
+                                            </Td>
+                                        </Tr>
+                                    );
+                                })
+                            }
                         </Tbody>
                     </Table>
                 </TableContainer>
             </Box>
-        </>
+        </>)
     )
 }

@@ -1,5 +1,5 @@
-export const GetUser = (token, idUser) => {
-    return fetch(`https://censo-ufms.herokuapp.com/auth/usuario/${idUser}`, {
+export const GetAll = (token) => {
+    return fetch('https://censo-ufms.herokuapp.com/auth/usuarios', {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + token

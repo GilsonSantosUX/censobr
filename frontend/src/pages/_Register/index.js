@@ -2,9 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 import { Text, HStack, Flex, Box, Image, Link, Input, Select, Checkbox, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react'
 import { UserContext } from "../../context/HandleUser"
 import { formatCPF } from '@brazilian-utils/brazilian-utils';
+import { formatRg } from "../../helpers/format.js"
 
 import { Button } from "../../components/Button";
-import { formatRg } from "../../helpers/format.js"
 import registerImg from "../../dist/createUser.svg"
 import logo from "../../dist/logo.svg"
 import iconFirstAcess from "../../dist/iconFirstAcess.svg"
