@@ -20,7 +20,6 @@ const { createPapel, getPapelAll, getPapelUnique, altPapel, delPapel } = require
 // Routes Authentication
 
 router.post('/auth', authetication);
-router.post('/auth/usuario/cadastro', createUsuario);
 router.use(authMiddleware);
 router.get('/authenticate', authenticate);
 
@@ -28,6 +27,7 @@ router.get('/authenticate', authenticate);
 router.get('/auth/usuario/:id', getUsuarioUnique);
 router.get('/auth/usuarios', getUsuarioAll);
 router.put('/auth/usuario/alterar', altUsuario);
+router.post('/auth/usuario/cadastro', createUsuario);
 router.delete('/auth/usuario/deletar', delUsuario);
 
 // Routes Pessoa
