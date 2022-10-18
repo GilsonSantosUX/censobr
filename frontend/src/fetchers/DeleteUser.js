@@ -1,5 +1,5 @@
 export const DeleteUser = (token, id, cpf) => {
-    return fetch('http://localhost:3001/auth/usuario/deletar', {
+    return fetch('https://censo-ufms.herokuapp.com/auth/usuario/deletar', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', "Authorization": "Bearer " + token },
         body:JSON.stringify({
