@@ -1,11 +1,15 @@
-export const DeleteUser = (token, id) => {
+export const DeleteUser = (token, id, cpf) => {
+    console.log(token)
+    console.log(id)
+    console.log(cpf)
     return fetch('https://censo-ufms.herokuapp.com/auth/usuario/deletar', {
         method: 'DELETE',
         headers: {
             "Authorization": "Bearer " + token
         },
         body: {
-            "cpf": id
+            "idusuario": id,
+            "cpf": cpf
         }
     }).then((data) => {
         return data

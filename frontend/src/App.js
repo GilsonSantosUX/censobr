@@ -9,7 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import { Login } from './pages/Login/index.js';
-import { Register } from './pages/Register/index.js';
+// import { Register } from './pages/_Register/index.js';
 import { Gestao } from './pages/Gestao/index.js';
 import { Home } from './pages/Home/index.js';
 
@@ -22,15 +22,16 @@ function App() {
   useEffect(() => {
     // console.log('auth', authenticate);
     const auth = localStorage.getItem("token");
-    if (auth && window.location.pathname === "/gestao") {
-      return;
+    if (auth && window.location.pathname === "/login") {
+      window.location.href = "/gestao"
     }
     else if (auth && window.location.pathname === "/gestao") {
-      window.location.href = "/gestao"
+      return;
     }
     else if (!auth && window.location.pathname === "/login") {
       return;
-    } else {
+    }
+    else if (!auth && window.location.pathname === "/gestao") {
       window.location.href = "/login"
     }
 
@@ -41,7 +42,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/gestao" element={<Gestao />} />
           <Route path="*" element={<Home />} />
         </Routes>

@@ -83,9 +83,9 @@ export const Gestao = () => {
         }
     }
 
-    const handleDelete = async (id) => {
-        const response = await DeleteUser(id);
-        console.log(response);
+    const handleDelete = async (id, cpf) => {
+        const response = await DeleteUser(token, id, cpf);
+        console.log(`the response`, response);
         // window.location.reload();
     }
 
@@ -234,8 +234,8 @@ export const Gestao = () => {
                                             <Td>{user.data.Pessoa.nome}</Td>
                                             <Td w="30px">
                                                 <Flex justifyContent="space-around">
-                                                    <EditIcon w={5} h={5} mr="10px" />
-                                                    <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario)} cursor="pointer" />
+                                                    {/* <EditIcon w={5} h={5} mr="10px" /> */}
+                                                    <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" />
                                                 </Flex>
                                             </Td>
                                         </Tr>
