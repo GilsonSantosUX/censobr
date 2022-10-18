@@ -235,7 +235,7 @@ export const Gestao = () => {
                                             <Td w="30px">
                                                 <Flex justifyContent="space-around">
                                                     {/* <EditIcon w={5} h={5} mr="10px" /> */}
-                                                    <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" />
+                                                    {/* <DeleteIcon w={5} h={5} ml="10px" color="red" onClick={() => handleDelete(e.idusuario, e.Pessoa.cpf)} cursor="pointer" /> */}
                                                 </Flex>
                                             </Td>
                                         </Tr>
