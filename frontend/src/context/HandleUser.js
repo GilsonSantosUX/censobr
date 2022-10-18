@@ -6,7 +6,7 @@ import { GetAuthUser } from "../fetchers/GetAuthUser.js"
 const UserContext = createContext();
 
 function AuthProvider({ children }) {
-    const [authenticate, setAuthenticate] = useState(false);
+    const [authenticate, setAuthenticate] = useState();
     const [loading, setLoadingoading] = useState(true);
     const [emailAndPasswordInvalid, setEmailAndPasswordInvalid] = useState(true);
 
@@ -25,13 +25,13 @@ function AuthProvider({ children }) {
     }, [authenticate])
 
     async function handleLogin(email, password) {
+        setAuthenticate(true);
         const autorizationAuth = await GetLogin(email, password);
         console.log(autorizationAuth)
         if (autorizationAuth.status === 200) {
             let responseJson = await autorizationAuth.json();
             localStorage.setItem("token", responseJson.token);
             localStorage.setItem("userId", responseJson.idusuario);
-            setAuthenticate(true);
             window.location.href = "/gestao"
         } else {
             setEmailAndPasswordInvalid(false);

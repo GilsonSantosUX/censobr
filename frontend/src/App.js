@@ -20,16 +20,21 @@ function App() {
 
 
   useEffect(() => {
-    if (authenticate && (window.location.pathname === "/login" || window.location.pathname === "/register")) {
+    // console.log('auth', authenticate);
+    const auth = localStorage.getItem("token");
+    if (auth && window.location.pathname === "/gestao") {
+      return;
+    }
+    else if (auth && window.location.pathname === "/gestao") {
       window.location.href = "/gestao"
     }
-    else if (authenticate) {
+    else if (!auth && window.location.pathname === "/login") {
       return;
     } else {
       window.location.href = "/login"
     }
 
-  }, [authenticate])
+  }, [])
 
   return (
     <MediaProvider mediaType={mediaType}>
