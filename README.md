@@ -18,55 +18,35 @@ O sistema é responsável por registrar as respostas dos candidatos da pesquisa,
 
 ### Ferramentas usadas
 - Nodejs
-- Postgress
-- React
-- Prisma
+- Express
 - JWT
+- Prisma
+- Postgresql
+- Heroku
+- React
+- Chakra UI
 
 ### Pré requisitos
 
-- Node@v17.0.1
+- Node@v16.0.1
+- Git
 
 ## Instalação
 
-#### Configurações de ambiente
+Há dois caminho para realizar a instalação, um deles é clonando o projeto como esta documentado abaixo, outra seria fazendo o download do zip do projeto e extraindo no seu desktop.
 
-
+### Configurações de ambiente
+#### Instalar utilizando o git ou terminal
 ```sh
 git clone https://github.com/CaiqueRamos/grupo-1---cs.git
 cd grupo-1---cs
-cd api
-And 
-cd frontend
 ```
+#### Instalar utilizando o ZIP
+Link para download <https://github.com/CaiqueRamos/grupo-1---cs/archive/refs/heads/main.zip/>
 
-Criar arquivo .env na raiz do projeto api e incluir os dados abaixo:
-
-```sh
-DATABASE_URL=postgres://jhknauumdqatmf:c62986f10995a9f07c1aa5a8ff49118adef37f139fbb2a9c8966fa087550f865@ec2-3-219-19-205.compute-1.amazonaws.com:5432/d8n9fvinrsia2j
-PORT=3001
-SECRET=c15a43fe1ebd753eb5249b30bdba2fe0
-```
-
-**Nota**: Banco de dados rodando no heroku.
-
-### API - Back-End
-
-```sh
-cd api
-npm install
-npm run dev
-```
-Abra o browser no <http://localhost:3001/>
-Para acessar a documentação das rotas acesse http://localhost:3001/docs
-
-**Extra**:Caso queira ver as informações do banco de dados siga os passos abaixo:
-
-```sh
-cd api
-npx prisma studio 
-```
-Com esse comando ele irá abrir um painel do Prisma para visualizar as informações do banco de dados, acessar <http://localhost:5555/>
+    1- Baixe o projeto através do link
+    2- Extrai para seu desktop
+    3- Siga as instruções abaixo
 ### Front-End
 
 ```sh
@@ -85,6 +65,12 @@ Abra o browser no <http://localhost:3000/>
 #### Historia do usuário
 
 **Sistema**
+Acessar o sistema usando as credenciais de ADM
+
+```sh
+E-mail:admin@censobr.com.br
+Senha:senha!0
+```
 
 - [x] Login por e-mail e senha
 - [x] Cadastro de novo usuário
