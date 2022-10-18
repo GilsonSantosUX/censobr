@@ -18,10 +18,13 @@ O sistema é responsável por registrar as respostas dos candidatos da pesquisa,
 
 ### Ferramentas usadas
 - Nodejs
-- Postgress
-- React
-- Prisma
+- Express
 - JWT
+- Prisma
+- Postgresql
+- Heroku
+- React
+- Chakra UI
 
 ### Pré requisitos
 
@@ -44,45 +47,6 @@ Link para download <https://github.com/CaiqueRamos/grupo-1---cs/archive/refs/hea
     1- Baixe o projeto através do link
     2- Extrai para seu desktop
     3- Siga as instruções abaixo
-
-
-**Entrar na pasta da API**
-```sh
-cd api
-```
-
-**Entrar na pasta do frontend**
-```sh
-cd frontend
-```
-
-Criar arquivo .env na raiz do projeto api e incluir os dados abaixo:
-
-```sh
-DATABASE_URL=postgres://jhknauumdqatmf:c62986f10995a9f07c1aa5a8ff49118adef37f139fbb2a9c8966fa087550f865@ec2-3-219-19-205.compute-1.amazonaws.com:5432/d8n9fvinrsia2j
-PORT=3001
-SECRET=c15a43fe1ebd753eb5249b30bdba2fe0
-```
-
-**Nota**: Banco de dados rodando no heroku.
-
-### API - Back-End
-
-```sh
-cd api
-npm install
-npm run dev
-```
-Abra o browser no <http://localhost:3001/>
-Para acessar a documentação das rotas acesse http://localhost:3001/docs
-
-**Extra**:Caso queira ver as informações do banco de dados siga os passos abaixo:
-
-```sh
-cd api
-npx prisma studio 
-```
-Com esse comando ele irá abrir um painel do Prisma para visualizar as informações do banco de dados, acessar <http://localhost:5555/>
 ### Front-End
 
 ```sh
