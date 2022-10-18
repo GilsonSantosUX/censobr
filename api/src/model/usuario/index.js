@@ -209,25 +209,30 @@ module.exports = {
     },
     //TODO ver com Gilson sobre a necessidade desses dados no delete
     //TODO ver se não vai excluir primeiro das classes que herda exemplo Usuario excluir da Classe Pessoa?
-    async deleteUsuario(cpf){
-        const data = await prisma.Usuario.findUnique({ where: { cpf },});
-        try{
-            if(!data) return false;
-            return await prisma.Usuario.delete({
+    async deleteUsuario(data){
+        const {idusuario, cpf } = data;
+        let pessoa = await prisma.Pessoa.findUnique({ where: {cpf}});
+        let usuario = await prisma.Usuario.findUnique({ where: {idusuario}});
+        try{ 
+            if(!pessoa) return false;
+            if(!usuario) return false;
+            usuario = await prisma.Usuario.delete({
+                where: { idusuario },
+                select:{
+                    email:true
+                }
+            });
+            pessoa = await prisma.Pessoa.delete({
                 where: { cpf },
                 select:{
                     nome:true,
-                    email:true,
-                    Papel:{
-                        select:{
-                            silga:true,
-                            descricao:true
-                        }
-                    },
+                    cpf:true
                 }
             });
+            return {pessoa,usuario};
         }catch(error){
             throw console.log({
+                error,
                 name: 'Prisma error',
                 message: "https://www.prisma.io/docs/reference/api-reference/error-reference#"+error.code,
                 code: error.code,

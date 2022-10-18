@@ -41,13 +41,6 @@
         "responses": {}
       }
     },
-    "/auth/usuario/cadastro": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/authenticate": {
       "get": {
         "description": "",
@@ -65,10 +58,16 @@
         }
       }
     },
-    "/auth/usuario": {
+    "/auth/usuario/{id}": {
       "get": {
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "authorization",
             "in": "header",
@@ -101,6 +100,23 @@
     },
     "/auth/usuario/alterar": {
       "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/usuario/cadastro": {
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -150,10 +166,16 @@
         }
       }
     },
-    "/auth/pessoa": {
+    "/auth/pessoa/{id}": {
       "get": {
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "authorization",
             "in": "header",
@@ -203,6 +225,23 @@
     },
     "/auth/pessoa/deletar": {
       "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/supervisor": {
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -745,10 +784,16 @@
         }
       }
     },
-    "/auth/papel": {
+    "/auth/papel/{id}": {
       "get": {
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "authorization",
             "in": "header",
