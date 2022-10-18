@@ -25,18 +25,34 @@ O sistema é responsável por registrar as respostas dos candidatos da pesquisa,
 
 ### Pré requisitos
 
-- Node@v17.0.1
+- Node@v16.0.1
+- Git
 
 ## Instalação
 
-#### Configurações de ambiente
+Há dois caminho para realizar a instalação, um deles é clonando o projeto como esta documentado abaixo, outra seria fazendo o download do zip do projeto e extraindo no seu desktop.
 
-
+### Configurações de ambiente
+#### Instalar utilizando o git ou terminal
 ```sh
 git clone https://github.com/CaiqueRamos/grupo-1---cs.git
 cd grupo-1---cs
+```
+#### Instalar utilizando o ZIP
+Link para download <https://github.com/CaiqueRamos/grupo-1---cs/archive/refs/heads/main.zip/>
+
+    1- Baixe o projeto através do link
+    2- Extrai para seu desktop
+    3- Siga as instruções abaixo
+
+
+**Entrar na pasta da API**
+```sh
 cd api
-And 
+```
+
+**Entrar na pasta do frontend**
+```sh
 cd frontend
 ```
 
@@ -85,6 +101,12 @@ Abra o browser no <http://localhost:3000/>
 #### Historia do usuário
 
 **Sistema**
+Acessar o sistema usando as credenciais de ADM
+
+```sh
+E-mail:admin@censobr.com.br
+Senha:senha!0
+```
 
 - [x] Login por e-mail e senha
 - [x] Cadastro de novo usuário

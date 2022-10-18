@@ -29,8 +29,7 @@ module.exports = {
   //#endregion getPapelAll
 
   //#region getPapelUnique
-  async getPapelUnique(data) {
-    const { idpapel } = data;
+  async getPapelUnique(idpapel) {
     if (!idpapel) return false;
     try {
       return await prisma.Papel.findUnique({

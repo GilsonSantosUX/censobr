@@ -98,9 +98,9 @@ module.exports = {
     //#endregion
     try {
 
-      if (!req.body) return res.status(status(401).reqStatus).json({ message: status(401).message, status: status(401).reqStatus });
+      if (!req.params.id) return res.status(status(401).reqStatus).json({ message: status(401).message, status: status(401).reqStatus });
 
-      const data = await papelModel.getPapelUnique(req.body);
+      const data = await papelModel.getPapelUnique(parseInt(req.params.id));
 
       if (!data) return res.status(400).json({ message: 'Não foi possível atualizar essa informação!', data: null, status: status(400).reqStatus });
 

@@ -44,6 +44,34 @@ module.exports = {
             });
         }
     },
+    async getSupervisor(){
+        try{
+            return await prisma.Usuario.findMany(
+                {
+                    select:{
+                        Supervisiona:{
+                            select:{
+                                Pessoa:{
+                                    select:{
+                                        nome:true,
+                                        cpf:true
+                                    }
+                                },
+                            }
+                        }
+                    }
+                }
+            );
+        }catch(error){
+            throw console.log({
+                name: 'Prisma error',
+                message: "https://www.prisma.io/docs/reference/api-reference/error-reference#"+error.code,
+                code: error.code,
+                meta: error.meta,
+                stack: 'getUsuarioAll()'
+            });
+        }
+    },
     async getUsuarioAuth(data){
         const {email} = data;
         if(!email) return false;
@@ -71,8 +99,7 @@ module.exports = {
             });
         }
     },
-    async getUsuarioUnique(data){
-        const {idusuario } = data;
+    async getUsuarioUnique(idusuario){
         if(!idusuario) return false;
         try{
             return await prisma.Usuario.findUnique({
@@ -107,6 +134,7 @@ module.exports = {
             });
         }catch(error){
             throw console.log({
+                error,
                 name: 'Prisma error',
                 message: "https://www.prisma.io/docs/reference/api-reference/error-reference#"+error.code,
                 code: error.code,

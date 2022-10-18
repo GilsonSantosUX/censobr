@@ -7,7 +7,7 @@ const authMiddleware = require('./middlewares/auth');
 // Controllers
 const { authetication } = require("@controller/authentication");
 const { authenticate } = require('@controller/authentication/projectController');
-const { createUsuario, getUsuarioAll, getUsuarioUnique, altUsuario, delUsuario } = require('@controller/usuarioController');
+const { createUsuario, getUsuarioAll, getUsuarioUnique, altUsuario, delUsuario,getSupervisor } = require('@controller/usuarioController');
 const { createPessoa, getPessoaAll, getPessoaUnique,altPessoa,delPessoa } = require('@controller/pessoaController');
 const { createEndereco, getEnderecoAll, getEnderecoUnique,altEndereco,delEndereco } = require('@controller/enderecoController');
 const { createEntrevistado, getEntrevistadoAll, getEntrevistadoUnique, altEntrevistado, delEntrevistado } = require('@controller/entrevistadoController');
@@ -25,17 +25,18 @@ router.use(authMiddleware);
 router.get('/authenticate', authenticate);
 
 // Routes Usuario
-router.get('/auth/usuario', getUsuarioUnique);
+router.get('/auth/usuario/:id', getUsuarioUnique);
 router.get('/auth/usuarios', getUsuarioAll);
 router.put('/auth/usuario/alterar', altUsuario);
 router.delete('/auth/usuario/deletar', delUsuario);
 
 // Routes Pessoa
 router.post('/auth/pessoa/cadastro', createPessoa);
-router.get('/auth/pessoa', getPessoaUnique);
+router.get('/auth/pessoa/:id', getPessoaUnique);
 router.get('/auth/pessoas', getPessoaAll);
 router.put('/auth/pessoa/alterar', altPessoa);
 router.delete('/auth/pessoa/deletar', delPessoa);
+router.get('/auth/supervisor',getSupervisor);
 
 // Routes Entrevistado
 router.post('/auth/entrevistado/cadastro', createEntrevistado);
@@ -81,7 +82,7 @@ router.delete('/auth/pesquisa/deletar', delPesquisa);
 
 // Routes Papel
 router.post('/auth/papel/cadastro',createPapel);
-router.get('/auth/papel',getPapelUnique);
+router.get('/auth/papel/:id',getPapelUnique);
 router.get('/auth/papeis',getPapelAll);
 router.put('/auth/papel/alterar',altPapel);
 router.delete('/auth/papel/deletar',delPapel);

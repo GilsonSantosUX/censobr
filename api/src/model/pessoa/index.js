@@ -30,8 +30,7 @@ module.exports = {
             });
         }
     },
-    async getPessoaUnique(data){
-        const {idpessoa } = data;
+    async getPessoaUnique(idpessoa){
         if(!idpessoa) return false;
         try{
             return await prisma.Pessoa.findUnique({
@@ -112,12 +111,12 @@ module.exports = {
             });
         }
     },
-    async deletePessoa(cpf){
-        const data = await prisma.Pessoa.findUnique({ where: { cpf },});
+    async deletePessoa(idpessoa){
+        const data = await prisma.Pessoa.findUnique({ where: { idpessoa },});
         try{
             if(!data) return false;
             return await prisma.Pessoa.delete({
-                where: { cpf },
+                where: { idpessoa },
                 select:{
                     nome:true,
                     cpf:true,

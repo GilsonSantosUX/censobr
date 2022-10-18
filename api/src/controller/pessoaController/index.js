@@ -3,8 +3,6 @@ const { status } = require("@helper/Status/index");
 const { Papel } = require("@helper/");
 
 module.exports = {
-    
- 
     async createPessoa(req,res){
         
         //#region Swagger
@@ -112,9 +110,9 @@ module.exports = {
        //#endregion
         try{
             
-            if(!req.body) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
+            if(!req.params.id) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
 
-            const data = await pessoaModel.getPessoaUnique(req.body);
+            const data = await pessoaModel.getPessoaUnique(parseInt(req.params.id));
             
             if(!data) return res.status(400).json({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});
 
@@ -170,9 +168,9 @@ module.exports = {
        //#endregion
         try{
             
-            if(!req.body) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
+            if(!parseInt(req.params.id)) return res.status(status(401).reqStatus).json({message:status(401).message,status:status(401).reqStatus});
 
-            const data = await pessoaModel.deletePessoa(req.body);
+            const data = await pessoaModel.deletePessoa(parseInt(req.params.id));
             
             if(!data) return res.status(400).json({message:'Não foi possível atualizar essa informação!',data:null,status:status(400).reqStatus});
 
