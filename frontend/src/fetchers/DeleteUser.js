@@ -8,10 +8,11 @@ export const DeleteUser = (token, id, cpf) => {
             "Authorization": "Bearer " + token
         },
         body: {
-            "idusuario": id,
-            "cpf": cpf
+            "idusuario": 9,
+            "cpf": "33345678912"
         }
     }).then((data) => {
+        console.log('the delete', data)
         return data
     }).catch((e) => {
         console.error(e)

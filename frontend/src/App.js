@@ -20,7 +20,6 @@ function App() {
 
 
   useEffect(() => {
-    // console.log('auth', authenticate);
     const auth = localStorage.getItem("token");
     if (auth && window.location.pathname === "/login") {
       window.location.href = "/gestao"
@@ -44,7 +43,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/gestao" element={<Gestao />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Gestao />} />
         </Routes>
       </BrowserRouter>
     </MediaProvider>

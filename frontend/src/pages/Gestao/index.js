@@ -73,9 +73,9 @@ export const Gestao = () => {
         })()
     }, [listenForm])
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (inputName && cpf && rg && papel && email && password && confirmPassword && handleCheckbox) {
-            CreateUser(email, password, parseInt(papel), 2, inputName, cpf, rg, token);
+            const response = await CreateUser(email, password, parseInt(papel), 2, inputName, cpf, rg, token);
             setListemForm(true);
             window.location.reload();
         } else {

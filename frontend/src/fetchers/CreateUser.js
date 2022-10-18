@@ -12,6 +12,7 @@ export const CreateUser = (email, senha, fkpapel, supervisor, nome, cpf, rg, tok
             "rg": rg
         })
     }).then((data) => {
+        console.log('the data', data)
         return data.json();
     }).then((data) => {
         return data;
