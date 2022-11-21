@@ -1,22 +1,19 @@
 import { URL_REQUEST } from "../constants"
 
-export const CreateUser = (email, senha, fkpapel, supervisor, nome, cpf, rg, token) => {
-    const response = fetch(`${URL_REQUEST}/auth/usuario/cadastro`, {
+export const CreatePessoa = (nome, cpf, rg, token) => {
+    const response = fetch(`${URL_REQUEST}/auth/pessoa/cadastro`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Authorization": "Bearer " + token },
         body: JSON.stringify({
-            "email": email,
-            "senha": senha,
-            "fkpapel": fkpapel,
-            "supervisor": 2,
             "nome": nome,
             "cpf": cpf,
             "rg": rg
         })
     }).then((data) => {
-        console.log('the data', data)
+        console.log(data)
         return data.json();
     }).then((data) => {
+        console.log(data);
         return data;
     }).catch((e) => {
         console.error(e)
